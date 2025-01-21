@@ -1,20 +1,46 @@
 public class Admin {
-    // Admin Attributes
+// Admin Attributes
     String adminName;
     String adminPassword;
 
-    // Constructor
+// Constructor
     Admin(String newAdminName, String newAdminPassword) {
         adminName = newAdminName;
         adminPassword = newAdminPassword;
     }
 
-    // Methods
+// Methods
+
+    // Login
     public boolean login(String loginName, String loginPassword ) {
-        if(loginName == adminName && loginPassword == adminPassword) {
-            return true;
-        } else {
-            return false;
-        }
+        return (adminName == loginName && adminPassword == loginPassword);
+    }
+
+    public void changeRoomStatus() {
+
+    }
+    
+    public String checkRefund() {
+        return "Booked";
+    }
+    
+    public void chargeForExtra() {
+        
+    }
+
+    public boolean isChekedIn() {
+        return true;
+    }
+
+    public void checkIn() {
+
+    }
+
+    public boolean isCheckOut() {
+        return true;
+    }
+
+    public void checkOut() {
+
     }
 }
