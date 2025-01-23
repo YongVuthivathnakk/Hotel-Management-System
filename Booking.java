@@ -1,8 +1,8 @@
 class Booking {
     // attribute
     String userName;
-    String bookingId;
-    String date;
+    String bookingId; // generate random number
+    String date; // generate today date
     int numberOfRoom;
     int numberOfAdultGuest;
     int numberOfKidGuest;
@@ -11,5 +11,9 @@ class Booking {
     String phoneNumber;
 
     // constructor
+    Booking(String inputUserName, String inputPhoneNumber){
+        userName = inputUserName;
+        phoneNumber = inputPhoneNumber;
+    }
     
 }

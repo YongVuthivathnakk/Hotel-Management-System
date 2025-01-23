@@ -1,7 +1,6 @@
 class Payment{
     // attribute
     String cardNumber;
-   
     String status;
 
     // constructor 1 pay by cash
