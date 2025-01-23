@@ -16,7 +16,9 @@ public class Admin {
         return (adminName == loginName && adminPassword == loginPassword);
     }
 
-    public void changeRoomStatus() {
+    public void changeRoomStatus(String roomNum) {
+        // TODO: read the files and store in a linkedlist
+        // TODO: Compare the room
 
     }
     
