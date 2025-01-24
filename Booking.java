@@ -11,5 +11,8 @@ class Booking {
     String phoneNumber;
 
     // constructor
-    
+    Booking(String inputUserName, String inputPhoneNumber){
+        userName = inputUserName;
+        phoneNumber = inputPhoneNumber;
+    }
 }
