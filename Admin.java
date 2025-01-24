@@ -21,36 +21,24 @@ public class Admin {
 
     public static void changeRoomStatus(String roomNum) {
         // TODO: read the files and store in a linkedlist and show all room status
-        // + Promp to enter the room number that needed change
+        // + Promp to enter the room number that needed change the status
         // + Change the room status
-    }
-
-    public boolean isCheckInRequested() {
-        boolean isTrue = false;
-        //TODO: read the user CSV file about the request for check in
-        // + set TRUE or FALSE depend on the file
-        return isTrue;
     }
     
     public static void checkIn() {
-        //TODO: Before Excuting check for request status by using isCheckinRequested
-        // + if TRUE change the status to TRUE in user CSV file 
-    }
-
-    public boolean isCheckOutRequested() {
-        boolean isTrue = false;
-        //TODO: read the user CSV file about the request for check out
-        // + set TRUE or FALSE depend on the file
-        return isTrue;
+        //TODO: Before Excuting check, for request status by cheking the status in the user csv file
+        // + if TRUE change the status to TRUE and change checkout status to FALSE in user CSV file 
     }
     
     public static void checkOut() {
-        //TODO: Before Excuting check for request status by using isCheckinRequested
-        // + if TRUE change the status to TRUE in user CSV file 
+        //TODO: Before Excuting check for request status by checking the status in the user csv file
+        // + if TRUE change the status to TRUE and change checkin status to FALSE in user CSV file 
 
     }
 
     public String checkRefund() {
+        // TODO: Check for refund request.
+        // + If refund is requested it will check for the condition depend on the hotel policies.
         return "none";
     }
 }
