@@ -1,4 +1,4 @@
-public class guest {
+public class Guest {
     //personal infor of guest
     String fullName;
     String phone;
