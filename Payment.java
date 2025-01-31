@@ -5,7 +5,7 @@ class Payment{
     // this is an array cuz some user don't just booking only one room.
     String paymentDate; 
     static int paymentId = 0;
-    private String cardNumber;
+    String cardNumber;
     String status;
     private double totalPrice;
 
@@ -36,7 +36,4 @@ class Payment{
         return totalPrice;
     }
 
-    String getCreditcard(){
-        return cardNumber;
-    }
 }
