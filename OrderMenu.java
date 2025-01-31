@@ -1,18 +1,25 @@
-import java.util.Date;
-import java.util.List;
 
-public class OrderMenu {
-    Date orderDate;
-    List<String> item;
-    List<String> itemID;
-    List<Double> itemPrice;
-    double totalPrice;
+import java.time.LocalDateTime;
+
+public class OrderMenu {    
+    private int orderID; 
+    private static int totalID = 0;
+    private LocalDateTime orderDate;
+    private Menu[] items;  // List of Menu objects instead of just item names
+    private double totalPrice;
 
     // Constructor
-    public OrderMenu(Date orderDate, int ID, List<String> item, List<String> itemID, List<Double> itemPrice) {
+    public OrderMenu(LocalDateTime orderDate, Menu[] items) {
+        orderID = ++totalID;
         this.orderDate = orderDate;
-        this.item = item;
-        this.itemID = itemID;
-        this.itemPrice = itemPrice;
+        this.items = items;
     }
+
+    // Getter Method
+    public int getID() {
+        return orderID;
+    }
+
+    
+
 }
