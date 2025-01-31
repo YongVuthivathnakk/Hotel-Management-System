@@ -1,6 +1,6 @@
 class Booking {
     // attribute
-    String bookingId; // booking id will keep increasing everytime this will be teached next week
+    static int bookingId = 0;
     String userName;
     String bookingDate;
     int numberOfRoom;
@@ -11,14 +11,15 @@ class Booking {
     String roomType; 
 
     // constructor
-    Booking(String inputUserName, String inputPhoneNumber, String inputCheckInDate, String inputCheckOutDate, String inputRoomType, int inputNumberOfRoom, int inputDiscount, String inputBookingDate){
-        userName = inputUserName;
-        phoneNumber = inputPhoneNumber;
-        checkInDate = inputCheckInDate;
-        checkOutDate = inputCheckOutDate;
-        roomType = inputRoomType;
-        discount = inputDiscount;
-        bookingDate = inputBookingDate;
+    Booking(String userName, String phoneNumber, String checkInDate, String checkOutDate, String roomType, int numberOfRoom, int discount, String bookingDate){
+        bookingId++;
+        this.userName = userName;
+        this.phoneNumber = phoneNumber;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+        this.roomType = roomType;
+        this.discount = discount;
+        this.bookingDate = bookingDate;
     }
 
 }
