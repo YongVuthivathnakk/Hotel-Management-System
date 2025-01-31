@@ -1,5 +1,6 @@
 class Booking {
     // attribute
+    String bookingId; // booking id will keep increasing everytime this will be teached next week
     String userName;
     String bookingDate;
     int numberOfRoom;
