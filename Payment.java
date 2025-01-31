@@ -10,12 +10,12 @@ class Payment{
     double totalPrice;
 
     // constructor 1 pay by cash
-    Payment(){
+    Payment(String inputPaymentMethod, String[] bookingId, double inputTotalPrice, String PaymentId,String inputPaymentDate){
         status = "Pending";
     }
     
     // constructor 2 pay by card 
-    Payment(String inputPaymentMethod, String inputCardNumber, String paymentDate, String[] bookingID, double inputPrice){
+    Payment(String inputPaymentMethod, String inputCardNumber, String paymentDate, String[] bookingID, String inputPaymentId, double inputTotalPrice){
         cardNumber = inputCardNumber;
         status = "Paid";
     }
