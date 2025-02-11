@@ -1,6 +1,7 @@
 class Booking {
     // attribute
-    static int bookingId = 0;
+    static int Totalbooking = 0;
+    int bookingId;
     String userName;
     String bookingDate;
     int numberOfRoom;
@@ -12,7 +13,7 @@ class Booking {
 
     // constructor
     Booking(String userName, String phoneNumber, String checkInDate, String checkOutDate, String roomType, int numberOfRoom, int discount, String bookingDate){
-        bookingId++;
+        this.bookingId = Totalbooking++;
         this.userName = userName;
         this.phoneNumber = phoneNumber;
         this.checkInDate = checkInDate;

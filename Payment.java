@@ -1,19 +1,19 @@
 class Payment{
     // attribute
+    static int totalPayment = 0;
+    int paymentId;
     String paymentMethod;
     String[] bookingID; // booking id is needed for retriving the booking data for payment.
     // this is an array cuz some user don't just booking only one room.
     String paymentDate; 
-    static int paymentId = 0;
     String cardNumber;
     String status;
     private double totalPrice;
 
 
-
     // constructor 1 pay by cash
     Payment(String PaymentMethod, String[] BookingId, double TotalPrice, String PaymentDate){
-        paymentId++;
+        this.paymentId = totalPayment++;
         this.paymentMethod = PaymentMethod;
         this.bookingID = BookingId;
         this.totalPrice = TotalPrice;
