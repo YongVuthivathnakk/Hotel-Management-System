@@ -1,36 +1,32 @@
-import java.time.LocalTime;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
 public class Admin {
     private final int adminId;
     private static int totalID = 0;
     private String name;
-    // private String hashedPassword;
+    private String password;
     private String email;
     private String phoneNumber;
     private double salary;
     private String status; // OFFLINE, ONLINE
-    private LocalTime shiftStart;
-    private LocalTime shiftEnd;
     private String role; // MANAGER, SUPERVISOR, SUPPORT
 
-    public Admin(String name, String password, String email, String phoneNumber, double salary, LocalTime shiftStart, LocalTime shiftEnd, String role, String status) {
+    Admin(String name, String password, String email, String phoneNumber, String role, String status) {
         validateInput(name, password, email);
         this.adminId = ++totalID;
         this.name = name;
-        // this.hashedPassword = hashPassword(password);
+        this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.salary = salary;
+        this.salary = 0; // default salary
         this.status = status;
-        this.shiftStart = shiftStart;
-        this.shiftEnd = shiftEnd;
         this.role = role;
     }
 
     private void validateInput(String name, String password, String email) {
+        //thow new IllegalArgumentException means that the program will stop and show the error message
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Invalid name");
+            throw new IllegalArgumentException("Invalid name"); 
         }
         if (password == null || password.length() < 8) {
             throw new IllegalArgumentException("Password too weak");
@@ -62,21 +58,37 @@ public class Admin {
     }
 
     // Setters
-    public void setShift(LocalTime start, LocalTime end) {
-        this.shiftStart = start;
-        this.shiftEnd = end;
-    }
 
     public void setStatus(String status) {
         this.status = status;
     }
 
-    // public boolean verifyPassword(String inputPassword) {
-    //     return hashPassword(inputPassword).equals(hashedPassword);
-    // }
+    public void changePassword(String password) {
+        // check if the entered password is correct with the old password
+        if (this.password.equals(password)) {
+            // prompt the user to enter the new password
+            Scanner scanner = new Scanner(System.in);
+            String newPassword;
+            String reEnterPassword;
+            do {
+                do { 
+                    // Check if the user enter a password with at least 8 characters
+                    System.out.println("Enter the new password: ");
+                    newPassword = scanner.nextLine();
+                    if (newPassword.length() < 8) {
+                        System.out.println("Password too weak. Please try again.");
+                    }
+                } while (newPassword.length() < 8);
 
-    // private String hashPassword(String password) {
-    //     // Implement actual hashing (e.g., BCrypt)
-    //     return Integer.toString(password.hashCode());
-    // }
+                // Make sure that the user re-enter the password correctly 
+                System.out.println("Re-enter the new password: ");
+                reEnterPassword = scanner.nextLine();
+                if (!newPassword.equals(reEnterPassword)) {
+                    System.out.println("Passwords do not match. Please try again.");
+                }
+            } while (!newPassword.equals(reEnterPassword));
+            this.password = newPassword;
+            System.out.println("Password successfully changed.");
+        }
+    }
 }
