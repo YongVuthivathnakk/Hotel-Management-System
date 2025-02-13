@@ -6,7 +6,7 @@ class Payment extends TotalPriceCalculation{
     static int totalPayment = 1;
     int paymentId;
     String paymentMethod;
-    String[] bookingID; // booking id is needed for retriving the booking data for payment.
+    int[] bookingID; // booking id is needed for retriving the booking data for payment.
     // this is an array cuz some user don't just booking only one room.
     String paymentDate = currentDateAndCurrentTime.currentDate(); 
     String paymentTime = currentDateAndCurrentTime.currentTime();
@@ -16,27 +16,25 @@ class Payment extends TotalPriceCalculation{
     private double totalPrice = TotalPriceCalculation.netTotal;
 
     // List for storing all the past payment
-    HashMap<Integer, Payment> paymentList = new HashMap<Integer, Payment>();
+    static HashMap<Integer, Payment> paymentList = new HashMap<Integer, Payment>();
 
     // constructor 1 pay by cash
-    Payment(String PaymentMethod, String[] BookingId, String PaymentDate){
+    Payment(String PaymentMethod){
         this.paymentId = totalPayment++;
         this.paymentMethod = PaymentMethod;
-        this.bookingID = BookingId;
-        this.paymentDate = PaymentDate; // if they pay by cash, the payment date supposed to be the checkout date.
         this.status = "Pending";
         
         paymentList.put(paymentId, this);
     }
     
     // constructor 2 pay by card 
-    Payment(String PaymentMethod, String CardNumber, String PaymentDate, String[] BookingID, String PaymentId){
+    Payment(String PaymentMethod, String CardNumber, String PaymentDate, int[] BookingID, String PaymentId){
         this.paymentId = totalPayment++;
         this.paymentMethod = PaymentMethod;
         this.cardNumber = CardNumber;
         this.paymentDate = PaymentDate; // if pay by card the payment date is the date of payment.
         this.bookingID = BookingID;
-        
+
         
         this.status = "Paid";
         paymentList.put(paymentId, this);
@@ -85,27 +83,23 @@ class Payment extends TotalPriceCalculation{
         if(paymentMethod.equalsIgnoreCase("Cash")){
             PayByCash payByCash = new PayByCash();
             payByCash.pay(totalPrice);
-            System.out.println("The total price is: $" + totalPrice);
-            System.out.println("Accpeted Cash is: $" + accpetedCash);
-            System.out.println("The change is: $" + (accpetedCash - totalPrice));
-            System.out.println("The payment is completed sucessfully"); 
-            System.out.println("The payment method is: " + payByCash.paymentType()); 
-            System.out.println("The payment is made on: " + paymentDate + "at: " + paymentTime);
             status = "Paid";
+            System.out.println("The status is: " + status);
             
         }
         else if (paymentMethod.equalsIgnoreCase("Credit card")){
             PayByCreditCard payByCreditCard = new PayByCreditCard();
             payByCreditCard.pay(totalPrice);
-            System.out.println("The total price is: " + totalPrice);
-            System.out.println("Payment is using this card: " + cardNumber);
-            System.out.println("The payment is completed successfully");
-            System.out.println("The payment method is: " + payByCreditCard.paymentType());
-            System.out.println("The payment is made on: " + paymentDate + "at: " + paymentTime);
+            // System.out.println("The total price is: " + totalPrice);
+            // System.out.println("Payment is using this card: " + cardNumber);
+            // System.out.println("The payment is completed successfully");
+            // System.out.println("The payment method is: " + payByCreditCard.paymentType());
+            // System.out.println("The payment is made on: " + paymentDate + "at: " + paymentTime);
         }
         else{
             System.out.println("Invalid payment method");
         }
     }
 
+   
 }

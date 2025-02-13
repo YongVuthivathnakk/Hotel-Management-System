@@ -13,17 +13,45 @@ public class TotalPriceCalculation { // This will be the super class for payByCa
     double subTotal = 0.00;
     static double netTotal = 0.00;
 
-    HashMap<Integer,String> roomTypeList = new HashMap<Integer,String>();
-
+    HashMap<Integer, String> roomTypeMap = new HashMap<Integer,String>();
+    static HashMap<String, Float> roomTypeAndPrice = Room.getRoomTypePrices();
+    static ArrayList<Integer> BookingIds = new ArrayList<Integer>(); // this array work
+    ArrayList<String> roomTypeList = new ArrayList<String>();
+    ArrayList<Double> roomPriceList = new ArrayList<Double>();
+    
     public double calculateSubTotal(ArrayList<Integer> bookingIds){
+
         for(int bookingId : bookingIds){  // by this for loop we will get the room type that the user booked, and we will take this to get the roomprice for calculation
-            Booking BookingInfo = Booking.bookingMap.get(bookingId);
-            String bookedRoomType = BookingInfo.roomType;
-            roomTypeList.put(1, bookedRoomType);
+            Booking bookingInfo = Booking.bookingMap.get(bookingId);
+            if (bookingInfo == null) {
+                System.out.println("booking info is null");
+            }   
+
+            
+            String bookedRoomType = bookingInfo.roomType;
+            if (bookingInfo == null) {
+                System.out.println("Cannot find the infomation based on this ID: " + bookingId);
+            }
+            else{
+                roomTypeMap.put(bookingId, bookedRoomType); 
+                roomTypeList.add(bookedRoomType);
+            }
         }
 
-        
+        for(String roomType : roomTypeList){
+            float floatPrice = roomTypeAndPrice.get(roomType);
+            Double price = (double)floatPrice; // need conversion here because thyda used float instead of double
+            if (price != null) {
+                roomPriceList.add(price);
+            }
+            else{
+                System.out.println("We cannot find the price for room " + roomType);
+            }
+        }
 
+        for(Double roomPrice : roomPriceList){
+            subTotal += roomPrice;
+        }
 
         return subTotal;
     }
@@ -36,4 +64,5 @@ public class TotalPriceCalculation { // This will be the super class for payByCa
         return netTotal;
     }    
     
+
 }
