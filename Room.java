@@ -55,10 +55,14 @@ public class Room {
         roomTypePrices.put(this.roomType, pricePerNight);
     }
     
-    public void setAvailable(boolean isAvailable) {this.isAvailable = isAvailable;}
+    public void setAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
 
     // Static Methods
-    public static Room getRoom(String roomNumber) {return roomRegistry.get(roomNumber);}
+    public static Room getRoom(String roomNumber) {
+        return roomRegistry.get(roomNumber);
+    }
 
     public static boolean removeRoom(String roomNumber) {
         if (roomRegistry.containsKey(roomNumber)) {
