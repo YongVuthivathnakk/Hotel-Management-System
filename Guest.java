@@ -2,13 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Guest {
-    // Personal information of guest (public for direct access)
-    public String fullName;
-    public String phone;
-    public String email;
-    public String address;
-    public String nationality;
-    public String password; // For authentication
+    // Personal information of guest (private for better encapsulation)
+    private String fullName;
+    private String phone;
+    private String email;
+    private String address;
+    private String nationality;
+    private String password; // For authentication
     // List to store guests (public for simplicity)
     public static List<Guest> guestList = new ArrayList<>();
 
@@ -25,7 +25,28 @@ public class Guest {
         guestList.add(this);
     }
 
-    // Sign-in (register a new guest)
+    // Getter methods for private fields
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    // Sign-up (register a new guest)
     public static boolean signUp(String fullName, String phone, String email, String address, String nationality, String password) {
         // Check if user already exists
         for (Guest guest : guestList) {
@@ -34,7 +55,7 @@ public class Guest {
                 return false;
             }
         }
-        // Register new guest
+        // Register new guest and add it to the list
         new Guest(fullName, phone, email, address, nationality, password);
         System.out.println("Account created successfully! You can now log in.");
         return true;
@@ -43,12 +64,17 @@ public class Guest {
     // Log in (check user credentials)
     public static boolean login(String email, String password) {
         for (Guest guest : guestList) {
-            if (guest.email.equals(email) && guest.password.equals(password)) {
-                System.out.println("Login successful! Welcome back, " + guest.fullName);
-                return true;
+            if (guest.email.equals(email)) {
+                if (guest.password.equals(password)) {
+                    System.out.println("Login successful! Welcome back, " + guest.fullName);
+                    return true;
+                } else {
+                    System.out.println("Invalid password. Please try again.");
+                    return false;
+                }
             }
         }
-        System.out.println("Invalid email or password. Please try again.");
+        System.out.println("Email not found. Please check the email address and try again.");
         return false;
     }
 
@@ -64,7 +90,7 @@ public class Guest {
 
     // Main method for testing
     public static void main(String[] args) {
-        // Test sign-in
+        // Test sign-up
         signUp("John Doe", "1234567890", "john@example.com", "123 Street, NY", "USA", "pass123");
 
         // Test login
@@ -72,5 +98,8 @@ public class Guest {
 
         // Test login with wrong credentials
         login("john@example.com", "wrongpass");
+
+        // Test login with a non-existing email
+        login("nonexistent@example.com", "pass123");
     }
 }

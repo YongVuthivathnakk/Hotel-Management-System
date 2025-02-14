@@ -1,7 +1,7 @@
 public class RequestForCheckOut {
-    public String checkoutFullName;
-    public String checkoutPhone;
-    public String checkoutEmail; // Changed from "checkoutGmail" to be more generic
+    private String checkoutFullName;
+    private String checkoutPhone;
+    private String checkoutEmail; // Changed from "checkoutGmail" to be more generic
 
     // Constructor
     public RequestForCheckOut(String checkoutFullName, String checkoutPhone, String checkoutEmail) {

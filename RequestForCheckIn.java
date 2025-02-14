@@ -1,7 +1,7 @@
 public class RequestForCheckIn {
-    public String checkinFullName;
-    public String checkinPhone;
-    public String checkinEmail;  // Changed to "Email" (not "Gmail" to be more generic)
+    private String checkinFullName;
+    private String checkinPhone;
+    private String checkinEmail;  // Changed to "Email" (not "Gmail" to be more generic)
 
     // Constructor
     public RequestForCheckIn(String checkinFullName, String checkinPhone, String checkinEmail) {
