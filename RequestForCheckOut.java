@@ -11,7 +11,6 @@ public class RequestForCheckOut {
     }
 
     // Override toString() for better output readability
-    @Override
     public String toString() {
         return "Check-out Request:\n" +
                 "Full Name: " + checkoutFullName + "\n" +

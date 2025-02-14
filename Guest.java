@@ -9,7 +9,6 @@ public class Guest {
     public String address;
     public String nationality;
     public String password; // For authentication
-
     // List to store guests (public for simplicity)
     public static List<Guest> guestList = new ArrayList<>();
 
@@ -35,7 +34,6 @@ public class Guest {
                 return false;
             }
         }
-
         // Register new guest
         new Guest(fullName, phone, email, address, nationality, password);
         System.out.println("Account created successfully! You can now log in.");

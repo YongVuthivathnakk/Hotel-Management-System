@@ -11,7 +11,6 @@ public class RequestForCheckIn {
     }
 
     // Override toString() for better output
-    @Override
     public String toString() {
         return "Check-in Request:\n" +
                 "Full Name: " + checkinFullName + "\n" +
