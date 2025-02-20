@@ -1,71 +1,98 @@
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-class Payment extends TotalPriceCalculation{
-    // attribute
-    static int totalPayment = 1;
-    int paymentId;
-    String paymentMethod;
-    int[] bookingID; // booking id is needed for retriving the booking data for payment.
-    // this is an array cuz some user don't just booking only one room.
-    String paymentDate = currentDateAndCurrentTime.currentDate(); 
-    String paymentTime = currentDateAndCurrentTime.currentTime();
-    String cardNumber;
-    double accpetedCash;
-    String status;
-    private double totalPrice = TotalPriceCalculation.netTotal;
+public class Payment {
+    private static int totalPaymentId = 1;
+    private int paymentId;
+    private ArrayList<Integer> bookingId = new ArrayList<Integer>(); // to store multiple booking ID in case user has multiple bookings
+    private String paymentMethod;
+    private String paymentDate;
+    private String paymentTime;
+    private String cardNumber;
+    private double accpetedCash;
+    private String status;
+    private double totalPrice;
 
     // List for storing all the past payment
-    static HashMap<Integer, Payment> paymentList = new HashMap<Integer, Payment>();
+    private static HashMap<Integer, Payment> paymentList = new HashMap<Integer, Payment>();
 
-    // constructor 1 pay by cash
-    Payment(String PaymentMethod){
-        this.paymentId = totalPayment++;
-        this.paymentMethod = PaymentMethod;
+
+    // constructors
+    // constructor 1 - Pay by cash
+    public Payment(ArrayList<Integer> bookingId, double accpetedCash, double totalPrice) {
+        this.paymentId = totalPaymentId++;
+        this.bookingId = bookingId;
+        this.accpetedCash = accpetedCash;
+        this.totalPrice = totalPrice;
+        this.paymentMethod = "Cash";
         this.status = "Pending";
-        
-        paymentList.put(paymentId, this);
+    }
+    // constructor 2 - Pay by card
+    public Payment(ArrayList<Integer> bookingId, String cardNumber, double totalPrice) {
+        this.paymentId = totalPaymentId++;
+        this.bookingId = bookingId;
+        this.cardNumber = cardNumber;
+        this.totalPrice = totalPrice;
+        this.paymentMethod = "Card";
+        this.status = "Pending";
     }
     
-    // constructor 2 pay by card 
-    Payment(String PaymentMethod, String CardNumber, String PaymentDate, int[] BookingID, String PaymentId){
-        this.paymentId = totalPayment++;
-        this.paymentMethod = PaymentMethod;
-        this.cardNumber = CardNumber;
-        this.paymentDate = PaymentDate; // if pay by card the payment date is the date of payment.
-        this.bookingID = BookingID;
 
-        
-        this.status = "Paid";
-        paymentList.put(paymentId, this);
+    // getter 
+    public static int getTotalPayment() {
+        return totalPaymentId;
     }
 
-    double getTotalPrice(){
+    public int getPaymentId() {
+        return paymentId;
+    }
+
+    public ArrayList<Integer> getBookingId() {
+        return bookingId;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public String getPaymentDate() {
+        return paymentDate;
+    }
+
+    public String getPaymentTime() {
+        return paymentTime;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public double getAccpetedCash() {
+        return accpetedCash;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public double getTotalPrice() {
         return totalPrice;
     }
 
-    @Override
-    public String toString() {
-        return  "---------------------------------------------" + "\n" +
-                "Payment information for payment ID: " + paymentId + "\n" +
-                "Payment method: " + paymentMethod + "\n" +
-                "Booking ID: " + Arrays.toString(bookingID) + "\n" +
-                "Payment date:" + paymentDate + "\n" +
-                "Card number: " + cardNumber + "\n" +
-                "Status: " + status + "\n" +
-                "Total price: $" + totalPrice + "\n" +
-                "---------------------------------------------";
+    public static HashMap<Integer, Payment> getPaymentList() {
+        return paymentList;
     }
 
+    // this equal method is used to check to prevent having duplicated multiple ID
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + Arrays.hashCode(bookingID);
+        result = prime * result + ((bookingId == null) ? 0 : bookingId.hashCode());
         return result;
     }
 
-    @Override // this equals method will check and prevent it from paying the same bill more than once.
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -74,32 +101,24 @@ class Payment extends TotalPriceCalculation{
         if (getClass() != obj.getClass())
             return false;
         Payment other = (Payment) obj;
-        if (!Arrays.equals(bookingID, other.bookingID))
+        if (bookingId == null) {
+            if (other.bookingId != null)
+                return false;
+        } else if (!bookingId.equals(other.bookingId))
             return false;
         return true;
     }
 
-    public void paymentProcess(){
-        if(paymentMethod.equalsIgnoreCase("Cash")){
-            PayByCash payByCash = new PayByCash();
-            payByCash.pay(totalPrice);
-            status = "Paid";
-            System.out.println("The status is: " + status);
-            
-        }
-        else if (paymentMethod.equalsIgnoreCase("Credit card")){
-            PayByCreditCard payByCreditCard = new PayByCreditCard();
-            payByCreditCard.pay(totalPrice);
-            // System.out.println("The total price is: " + totalPrice);
-            // System.out.println("Payment is using this card: " + cardNumber);
-            // System.out.println("The payment is completed successfully");
-            // System.out.println("The payment method is: " + payByCreditCard.paymentType());
-            // System.out.println("The payment is made on: " + paymentDate + "at: " + paymentTime);
-        }
-        else{
-            System.out.println("Invalid payment method");
-        }
-    }
+    // method
+    // Double netTotalCalculation(){
 
-   
+    // }
+
+    // void Pay(){
+
+    // }
+
+    
+    
 }
+
