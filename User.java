@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-
 public abstract class User {
     protected String firstName;
     protected String lastName;
@@ -13,4 +11,22 @@ public abstract class User {
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
+
+    // Getters
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+    
 }

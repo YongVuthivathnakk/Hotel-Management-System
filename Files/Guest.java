@@ -1,7 +1,7 @@
 import Files.Validator;
 
 public class Guest {
-    private int guestId;
+    protected int guestId;
     private String firstName;
     private String lastName;
     private String email;

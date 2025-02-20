@@ -1,12 +1,9 @@
 import java.util.Scanner;
 
-public class Admin {
-    private final int adminId;
+public class Admin extends User {
+    private int id;
     private static int totalID = 0;
-    private String name;
     private String password;
-    private String email;
-    private String phoneNumber;
     private double salary;
     private String status; // OFFLINE, ONLINE
     private String role;   // MANAGER, SUPERVISOR, SUPPORT
@@ -14,47 +11,50 @@ public class Admin {
     // Scanner for input operations in methods like changePassword
     private Scanner scanner = new Scanner(System.in);
 
-    public Admin(String name, String password, String email, String phoneNumber, String role, String status) {
-        validateInput(name, password, email);
-        this.adminId = ++totalID;
-        this.name = name;
+    public Admin(String firstName, String lastName, String email, String phoneNumber, String role, String status, String password) {
+        super(firstName, lastName, email, phoneNumber);
+        this.id = ++totalID;
         this.password = password;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
         this.salary = 0; // default salary
         this.status = status;
         this.role = role;
     }
 
-    private void validateInput(String name, String password, String email) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Invalid name");
-        }
-        if (password == null || password.length() < 8) {
-            throw new IllegalArgumentException("Password too weak");
-        }
-        if (email == null || !email.contains("@")) {
-            throw new IllegalArgumentException("Invalid email");
-        }
-    }
-
     // Getters
-    public int getAdminId() {
-        return adminId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
+    
 
     public String getStatus() { 
         return status;
     }
     
+    // Email
+    @Override
+    public String getEmail() {
+        // TODO Auto-generated method stub
+        return super.getEmail();
+    }
+
+    // First Name
+    @Override
+    public String getFirstName() {
+        // TODO Auto-generated method stub
+        return super.getFirstName();
+    }
+
+    // last Name
+    @Override
+    public String getLastName() {
+        // TODO Auto-generated method stub
+        return super.getLastName();
+    }
+
+    @Override
+    // Phone Number
+    public String getPhoneNumber() {
+        // TODO Auto-generated method stub
+        return super.getPhoneNumber();
+    }
+
     public String getRole() { 
         return role;
     }
