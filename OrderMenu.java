@@ -76,6 +76,4 @@ public class OrderMenu {
     public void setDeliveryTime(LocalDateTime deliveryTime) {
         this.deliveryTime = deliveryTime;
     }
-    
-
 }
