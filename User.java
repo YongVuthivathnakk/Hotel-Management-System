@@ -3,13 +3,16 @@ public abstract class User {
     protected String lastName;
     protected String email;
     protected String phoneNumber;
+    protected String userName;
+    protected String password;
 
 
-    public User(String firstName, String lastName, String email, String phoneNumber) {
+    public User(String firstName, String lastName, String email, String phoneNumber, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.password = password;
     }
 
     // Getters
@@ -28,5 +31,10 @@ public abstract class User {
     public String getPhoneNumber() {
         return this.phoneNumber;
     }
+
+    public String getUserName() {
+        return this.userName;
+    }
     
+
 }

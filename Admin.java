@@ -12,9 +12,8 @@ public class Admin extends User {
     private Scanner scanner = new Scanner(System.in);
 
     public Admin(String firstName, String lastName, String email, String phoneNumber, String role, String status, String password) {
-        super(firstName, lastName, email, phoneNumber);
+        super(firstName, lastName, email, phoneNumber, password);
         this.id = ++totalID;
-        this.password = password;
         this.salary = 0; // default salary
         this.status = status;
         this.role = role;
@@ -58,6 +57,18 @@ public class Admin extends User {
     public String getRole() { 
         return role;
     }
+
+
+    public void showAdminDetails() {
+        System.out.println("==== Admin Details ====");
+        System.out.println("Full Name : ");
+    }
+
+
+
+
+
+// ===================================== Change Password =====================================================
 
     /**
      * Checks if the provided password meets security criteria:
@@ -115,9 +126,17 @@ public class Admin extends User {
         System.out.println("Password successfully changed.");
     }
 
-    // NOT YET CUZ NEED FILE IMPLEMENTATION
 
 // =========================================================================================================
+
+
+
+
+
+
+                                            // NOT YET CUZ NEED FILE IMPLEMENTATION
+
+// ========================================= Accept Checkin and Checkout form Guest =============================================================
 
     /**
      * Processes a checkout request from a user.
