@@ -1,26 +1,27 @@
 import java.util.Scanner;
 
-public class Admin extends User {
+public class Admin extends User implements Display {
     private int id;
     private static int totalID = 0;
     private String password;
     private double salary;
     private String status; // OFFLINE, ONLINE
-    private String role;   // MANAGER, SUPERVISOR, SUPPORT
 
     // Scanner for input operations in methods like changePassword
     private Scanner scanner = new Scanner(System.in);
 
-    public Admin(String firstName, String lastName, String email, String phoneNumber, String role, String status, String password) {
-        super(firstName, lastName, email, phoneNumber, password);
+    public Admin(String firstName, String lastName, String userName, String email, String phoneNumber, Double salary, String status, String password) {
+        super(firstName, lastName, userName, email, phoneNumber, password);
         this.id = ++totalID;
-        this.salary = 0; // default salary
+        this.salary = salary;
         this.status = status;
-        this.role = role;
     }
 
     // Getters
     
+    public int getId() {
+        return id;
+    }
 
     public String getStatus() { 
         return status;
@@ -54,21 +55,22 @@ public class Admin extends User {
         return super.getPhoneNumber();
     }
 
-    public String getRole() { 
-        return role;
+    
+    @Override
+    public String getUserName() {
+        // TODO Auto-generated method stub
+        return super.getUserName();
     }
+    
 
-
-    public void showAdminDetails() {
-        System.out.println("==== Admin Details ====");
-        System.out.println("Full Name : ");
+    @Override
+    public void display() {
+        // TODO Auto-generated method stub
+        
     }
-
-
-
-
 
 // ===================================== Change Password =====================================================
+
 
     /**
      * Checks if the provided password meets security criteria:
@@ -91,7 +93,7 @@ public class Admin extends User {
                 hasSpecial = true;
             }
         }
-        return hasUpper && hasLower && hasDigit && hasSpecial;
+        return (hasUpper && hasLower && hasDigit && hasSpecial);
     }
 
     /**
