@@ -19,10 +19,6 @@ public class StandardRoom extends Room {
         super.roomNumber.put("Standard room", roomNumberList);
     }
     
-    @Override
-    public void setCapacity(int capacity) {
-        super.setCapacity(capacity);
-    }
 
     
     
