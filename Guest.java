@@ -1,8 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Guest extends User{
-    private String userName;
+public class Guest extends User implements Display{
     private String address;
     private String nationality;
 
@@ -10,8 +9,7 @@ public class Guest extends User{
     private static Map<String, Guest> guestMap = new HashMap<>();
 
     public Guest(String firstName, String lastName, String phoneNumber, String email, String address, String nationality,  String userName , String password) {
-        super(firstName, lastName, email, phoneNumber, password);
-        this.userName = userName;
+        super(firstName, lastName, userName, email, phoneNumber, password);
         this.address = address;
         this.nationality = nationality;
     }
@@ -53,15 +51,19 @@ public class Guest extends User{
     }
 
     // Display guest details
-    public void displayDetails() {
-        System.out.println("Guest Details:");
-        System.out.println("Full Name: " + firstName + " " + lastName);
-        System.out.println("User Name: " + userName);
-        System.out.println("Phone: " + phoneNumber);
-        System.out.println("Email: " + email);
-        System.out.println("Address: " + address);
-        System.out.println("Nationality: " + nationality);
-    }
+    
+    
+        @Override
+        public void display() {
+            System.out.println("Guest Details:");
+            System.out.println("Full Name: " + firstName + " " + lastName);
+            System.out.println("User Name: " + userName);
+            System.out.println("Phone: " + phoneNumber);
+            System.out.println("Email: " + email);
+            System.out.println("Address: " + address);
+            System.out.println("Nationality: " + nationality);
+        }
+
 
     // Main method for testing
     public static void main(String[] args) {

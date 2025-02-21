@@ -1,30 +1,25 @@
-import java.time.LocalDate;
-import javax.management.relation.Role;
 
-public class Employee extends User {
+
+public class Employee extends User implements Display {
     private int id;
     private String role;
     private double salary;
-    private LocalDate hireDate;
+    private String hireDate;
     private String password;
     private static int totalId = 0;
 
 
-    public Employee(String firstName, String lastName, String email, String phoneNumber, String role, double salary, LocalDate hireDate, String employeePassword) {
-        super(firstName, lastName, email, phoneNumber);
+    public Employee(String firstName, String lastName, String userName, String email, String phoneNumber, String role, double salary, String hireDate, String password) {
+        super(firstName, lastName, userName, email, phoneNumber, password);
         this.id = ++totalId;
         this.role = role;
         this.salary = salary;
         this.hireDate = hireDate;
-        this.password = password;
     }
 
 
 
     // Getters
-
-        // ID
-  
     
     // Email
     @Override
@@ -32,6 +27,7 @@ public class Employee extends User {
         // TODO Auto-generated method stub
         return super.getEmail();
     }
+
 
     @Override
     public String getFirstName() {
@@ -66,16 +62,18 @@ public class Employee extends User {
     }
 
         // HireDate
-    public LocalDate getHireDate() {
+    public String getHireDate() {
         return hireDate;
     }
+
+
     // Method
-
-
-
-    public static void main(String[] args) {
-        User newEmployee = new Employee("nakk", "Nakk", "ambatukam", "12345", "admin", 100000, null, "12345");
-        System.out.println(((Employee)newEmployee).getRole());
+    
+    @Override
+    public void display() {
+        // TODO Auto-generated method stub
+        
     }
+
 
 }
