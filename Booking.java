@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Booking {
+public class Booking implements Display {
     private static int totalBookingId = 1;
     private int bookingId;
     private String userName;
@@ -132,24 +132,28 @@ public class Booking {
         } else if (!checkOutDate.equals(other.checkOutDate))
             return false;
         return true;
-    } 
+    }
 
+    
     // double subRoomTotalPrice(){
-
+        
     // }
-
-
+    
+    
     // double subServiceTotalPrice(){
-
+        
     // }
     
     // double subTotal(){
-
-    // }
-
-    // void printingBookingInfo(){
         
     // }
+    
+    @Override
+    public void display() {
+        // TODO Auto-generated method stub
+        
+    } 
+    
     
     
     
