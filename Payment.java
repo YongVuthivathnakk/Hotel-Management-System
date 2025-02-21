@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Payment {
+public class Payment implements Display {
     private static int totalPaymentId = 1;
     private int paymentId;
     private ArrayList<Integer> bookingId = new ArrayList<Integer>(); // to store multiple booking ID in case user has multiple bookings
@@ -108,16 +108,21 @@ public class Payment {
             return false;
         return true;
     }
-
+    
     // method
     // Double netTotalCalculation(){
-
+        
     // }
-
+    
     // void Pay(){
-
+        
     // }
-
+    
+    @Override
+    public void display() {
+        // TODO Auto-generated method stub
+        
+    }
     
     
 }
