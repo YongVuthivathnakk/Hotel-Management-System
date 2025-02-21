@@ -1,6 +1,13 @@
 import java.util.ArrayList;
 
 public class StandardRoom extends Room {
+    StandardRoom(){
+        this.description = "";
+        this.capacity = 2;
+        this.roomType = "Standard Room";
+        this.pricePerNight = 80;
+    }
+
     ArrayList<Integer> roomNumberList = new ArrayList<Integer>();
     @Override
     public void assignRoomNumberForEachRoomType() {

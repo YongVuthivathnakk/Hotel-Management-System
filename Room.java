@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class Room {
-    private String description;
-    private int capacity;
-    private String roomType;
-    private double pricePerNight;
-    private HashMap<String, ArrayList<Integer>> roomNumber = new HashMap<>();
+    protected String description;
+    protected int capacity;
+    protected String roomType;
+    protected double pricePerNight;
+    protected HashMap<String, ArrayList<Integer>> roomNumber = new HashMap<>();
 
     
 
