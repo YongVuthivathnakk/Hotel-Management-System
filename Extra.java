@@ -14,9 +14,15 @@ public class Extra {
     }
 
     // Getters
-    public String getName() { return name; }
-    public float getPrice() { return price; }
-    public String getCategory() { return category; }
+    public String getName() { 
+        return name; 
+    }
+    public float getPrice() { 
+        return price; 
+    }
+    public String getCategory() { 
+        return category; 
+    }
 
     // Setters
     public void setPrice(float price) {
@@ -46,10 +52,7 @@ public class Extra {
     }
     
     static {
-        addPredefinedExtra("Pillow", 5, "Bedding");
         addPredefinedExtra("Bed", 50, "Furniture");
         addPredefinedExtra("Breakfast", 15, "Food");
-        addPredefinedExtra("Airport Pickup", 30, "Transport");
-        addPredefinedExtra("Spa Access", 50, "Wellness");
     }
 }
