@@ -1,3 +1,4 @@
+package User;
 public abstract class User {
     protected String firstName;
     protected String lastName;
@@ -5,12 +6,16 @@ public abstract class User {
     protected String phoneNumber;
     protected String userName;
     protected String password;
+    protected String gender;
+    protected int age;
 
 
-    public User(String firstName, String lastName, String userName, String email, String phoneNumber, String password) {
+    public User(String firstName, String lastName, String userName, String gender, int age ,String email, String phoneNumber, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.gender = gender;
+        this.age = age;
         this.phoneNumber = phoneNumber;
         this.password = password;
         this.userName = userName;
@@ -37,4 +42,11 @@ public abstract class User {
         return this.userName;
     }
 
+    public String getGender() {
+        return this.gender;
+    }
+
+    public int age() {
+        return this.age;
+    }
 }

@@ -1,23 +1,18 @@
-
-
-public class Employee extends User implements Display {
+package User;
+public class Employee extends User{
     private int id;
     private String role;
     private double salary;
     private String hireDate;
     private String password;
-    private static int totalId = 0;
 
-
-    public Employee(String firstName, String lastName, String userName, String email, String phoneNumber, String role, double salary, String hireDate, String password) {
-        super(firstName, lastName, userName, email, phoneNumber, password);
-        this.id = ++totalId;
+    public Employee(String firstName, String lastName, String userName, String gender, int age ,String email, String phoneNumber, String password, String role, double salary, String hireDate) {
+        super(firstName, lastName, userName, gender, age, email, phoneNumber, password);
+        this.id += 1;
         this.role = role;
         this.salary = salary;
         this.hireDate = hireDate;
     }
-
-
 
     // Getters
     
@@ -68,12 +63,6 @@ public class Employee extends User implements Display {
 
 
     // Method
-    
-    @Override
-    public void display() {
-        // TODO Auto-generated method stub
-        
-    }
 
 
 }

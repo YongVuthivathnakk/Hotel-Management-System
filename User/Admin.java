@@ -1,6 +1,7 @@
+package User;
 import java.util.Scanner;
 
-public class Admin extends User implements Display {
+public class Admin extends User {
     private int id;
     private static int totalID = 0;
     private String password;
@@ -10,11 +11,11 @@ public class Admin extends User implements Display {
     // Scanner for input operations in methods like changePassword
     private Scanner scanner = new Scanner(System.in);
 
-    public Admin(String firstName, String lastName, String userName, String email, String phoneNumber, Double salary, String status, String password) {
-        super(firstName, lastName, userName, email, phoneNumber, password);
+    public Admin(String firstName, String lastName, String userName, String gender, int age, String email, String phoneNumber, String status, String password) {
+        
         this.id = ++totalID;
-        this.salary = salary;
         this.status = status;
+        this.salary = 0; // initial value of salary
     }
 
     // Getters
@@ -62,12 +63,11 @@ public class Admin extends User implements Display {
         return super.getUserName();
     }
     
-
-    @Override
-    public void display() {
-        // TODO Auto-generated method stub
-        
+    // Setters
+    public void setSalary(double inputSalary) {
+        this.salary = inputSalary;
     }
+
 
 // ===================================== Change Password =====================================================
 

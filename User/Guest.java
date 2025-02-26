@@ -1,7 +1,8 @@
+package User;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Guest extends User implements Display{
+public class Guest extends User{
     private String address;
     private String nationality;
 
@@ -51,10 +52,7 @@ public class Guest extends User implements Display{
     }
 
     // Display guest details
-    
-    
-        @Override
-        public void display() {
+        public void displayGuest() {
             System.out.println("Guest Details:");
             System.out.println("Full Name: " + firstName + " " + lastName);
             System.out.println("User Name: " + userName);
