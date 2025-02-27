@@ -7,12 +7,12 @@ public class Admin extends User {
     private String password;
     private double salary;
     private String status; // OFFLINE, ONLINE
-
     // Scanner for input operations in methods like changePassword
     private Scanner scanner = new Scanner(System.in);
 
-    public Admin(String firstName, String lastName, String userName, String gender, int age, String email, String phoneNumber, String status, String password) {
-        
+
+    public Admin(String firstName, String lastName, String userName, String gender, int age ,String email, String phoneNumber, String password, String status) {
+        super(firstName, lastName, userName, gender, age, email, phoneNumber, password);
         this.id = ++totalID;
         this.status = status;
         this.salary = 0; // initial value of salary

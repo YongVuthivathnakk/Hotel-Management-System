@@ -1,45 +1,77 @@
 package Register_and_Login;
 
 import java.util.Scanner;
-
+import java.util.regex.Pattern;
 import User.Admin;
 
-public class AdminRegister {
-    // Create universal admin for checking
+
+    public class AdminRegister {
+        public static boolean isValid(String email) {
+    
+        // Regular expression to match valid email formats
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    
+        // Compile the regex
+        Pattern p = Pattern.compile(emailRegex);
+        
+        // Check if email matches the pattern
+        return email != null && p.matcher(email).matches();
+    }
+
+
+
+    // Main
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         String firstName;
         String lastName;
         String userName;
+        String email;
         String status;
         String password;
         String gender;
 
-        System.out.println("==== Admin Registration =====");
-        // Enter the fist name
+        System.out.println("==== Admin Registration =====\n");
+        //Enter the fist name
         System.out.print("Enter your First name: ");
-        firstName = scanner.nextLine().replaceAll(" ", ""); // Remove all empty space
+        firstName = input.nextLine().replaceAll(" ", ""); // Remove all empty space
 
         // Enter the Last Name
         System.out.print("Enter your Last name: ");
-        lastName = scanner.nextLine().replaceAll(" ", ""); // Remove all empyt space
+        lastName = input.nextLine().replaceAll(" ", ""); // Remove all empyt space
         
         // Enter the user name
         System.out.print("Enter your User name: ");
-        userName = scanner.nextLine().replaceAll(" ", "");
+        userName = input.nextLine().replaceAll(" ", "");
         
         // Enter gender
-        System.out.print("Enter your gender (M / F): ");
         
-        gender = scanner.nextLine();
+        while (true) {
+            System.out.print("Enter your gender (M / F): ");
+            gender = input.nextLine();
+            if(gender.toUpperCase().equals("M") || gender.toUpperCase().equals("F")) {
+                break;
+            } else {
+                System.out.println("Please Try again!! Gender must be (M / F).");
+            }
+        }
 
-        scanner.close();
-        // while (true) {
-        // }
+        while (true) {
+            System.out.println("Enter your email address: ");
+            email = input.nextLine();
+            if (isValid(email)) {
+                break;
+            } else {
+                System.out.println("Wrong email address format!!");
+            }
+        }
+        
+        
 
 
-        // System.out.println("Enter your Username: ");
-        // System.out.println("Enter your email address: ");
+        input.close();
+
         // System.out.println("Enter your phone number: ");
         // System.out.println("Enter your Status: ");
         // System.out.println("Enter your Password: ");
