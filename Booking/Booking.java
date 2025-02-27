@@ -1,7 +1,12 @@
+package Booking;
+
+import TimeGenerator.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Booking implements Display {
+
+
+public class Booking {
     private static int totalBookingId = 1;
     private int bookingId;
     private String userName;
@@ -13,11 +18,11 @@ public class Booking implements Display {
     private String checkInDate;
     private String checkOutDate;
     ArrayList<String> services = new ArrayList<String>();
-    ArrayList<String> serviceQuantities = new ArrayList<String>();
+    ArrayList<Integer> serviceQuantities = new ArrayList<Integer>();
 
     private static HashMap <Integer, Booking> bookingList = new HashMap<Integer, Booking>();
 
-    public Booking(String userName, String phoneNumer, ArrayList<String> roomTypes, ArrayList<Integer> roomQuantites, int discount, String checkInDate, String checkOutDate, ArrayList<String> services, ArrayList<String> serviceQuantities) {
+    public Booking(String userName, String phoneNumer, ArrayList<String> roomTypes, ArrayList<Integer> roomQuantites, int discount, String checkInDate, String checkOutDate, ArrayList<String> services, ArrayList<Integer> serviceQuantities) {
         this.bookingId = totalBookingId++;
         this.userName = userName;
         this.phoneNumer = phoneNumer;
@@ -77,7 +82,7 @@ public class Booking implements Display {
         return services;
     }
 
-    public ArrayList<String> getServiceQuantities() {
+    public ArrayList<Integer> getServiceQuantities() {
         return serviceQuantities;
     }
 
@@ -91,9 +96,10 @@ public class Booking implements Display {
                "-----------------------------------------------------------------------------------" + "\n" + 
                "Booking ID: " + getBookingId() + "\t\t\t" + "Booking date: " + getBookingDate() + "\n" +
                "Customer name: " + getUserName() + "\t\t" + "Customer phone number: " + getPhoneNumer() + "\n" +
-               "Check-in date: " + getCheckInDate() + "\t\t" + "Check-out date: " + getCheckOutDate() + "\n" +
+               "Check-in date: " + getCheckInDate() + "\t" + "Check-out date: " + getCheckOutDate() + "\n" +
                "Room / Service" + "\t\t\t" + "Qty" + "\t" + "Price Per Unit" + "\t" + "Price" + "\n" +
-               getRoomTypes() + "\t\t\t" + getRoomQuantites() + "\t\t\t";
+               getRoomTypes() + "\t\t\t" + getRoomQuantites() + "\t\t\t" + "\n" +
+               getServices() + "\t\t\t" + getServiceQuantities();
 
     }
 
@@ -135,8 +141,9 @@ public class Booking implements Display {
     }
 
     
-    // double subRoomTotalPrice(){
-        
+    // public double subRoomTotalPrice(){
+
+    //     return ;
     // }
     
     
@@ -147,14 +154,8 @@ public class Booking implements Display {
     // double subTotal(){
         
     // }
-    
-    @Override
-    public void display() {
-        // TODO Auto-generated method stub
-        
-    } 
-    
-    
+
+    // double netTotal(){}
     
     
 }
