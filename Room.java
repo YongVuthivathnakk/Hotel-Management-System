@@ -114,13 +114,10 @@ public class Room {
         new Room("111", "Family Room", 150, "Family Room", 5);
         new Room("211", "Family Room", 150, "Family Room", 5);
     }
-<<<<<<< HEAD
-=======
 
 
     // added by Gek Heang
     public static HashMap<String, Float> getRoomTypePrices() {
         return roomTypePrices;
     }
->>>>>>> e79e6ad070369ed93f9b10eb4bc77e9e27c18c10
 }
