@@ -51,6 +51,10 @@ public abstract class User {
         return this.gender;
     }
 
+    public String getPassword() {
+        return this.password;
+    }
+
     public int age() {
         return this.age;
     }

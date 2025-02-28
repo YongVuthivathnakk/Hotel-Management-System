@@ -9,7 +9,7 @@ public class AdminLogin {
     static Admin testAdmin = new Admin("Jake", "The Dog", "JakeTheDog", "M", 18, "jakethedog@gmail.com", "8851234567", "12345678", "Online", 120.4);
        
        
-        public static void main(String[] args) {
+    public static void main(String[] args) {
     // =================== Variable ========================
     
             Scanner input = new Scanner(System.in);
@@ -18,17 +18,23 @@ public class AdminLogin {
     
     // ======================================================
 
-        System.out.println("====== Admin Login ======\n\n");
+        System.out.println("====== Admin Login ======\n");
         
         while(true) {
-            System.out.println("Username: ");
+            System.out.print("Username: ");
             userName = input.nextLine().trim().replaceAll(" ", "");
-            System.out.println("Passowrd: ");
+            System.out.print("Passowrd: ");
             password = input.nextLine();
-            if (userName.equals(testAdmin.getUserName() && password.equals(testAdmin.getPassword()))) {
-                
+
+            if (userName.equals(testAdmin.getUserName()) && password.equals(testAdmin.getPassword())) {
+                System.out.println("Welcome!!");
+                break;
+            } else {
+                System.out.println("Wrong password or Username!!! Please try again.");
             }
         }
+
+        input.close();
 
 
     }

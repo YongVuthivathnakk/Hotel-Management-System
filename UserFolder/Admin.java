@@ -59,7 +59,14 @@ public class Admin extends User {
     public String getUserName() {
         return super.getUserName();
     }
+
     
+    
+    @Override
+    public String getPassword() {
+        return super.getPassword();
+    }
+
     @Override
     public String toString() {
     return "=== Admin Info ====\n" +
