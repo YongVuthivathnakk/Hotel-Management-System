@@ -8,8 +8,8 @@ public class Validator {
 
     public boolean isEmailValid(String email) {
         // Regular expression to match valid email formats
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
-                            "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        String emailRegex = "^[a-z]+(?:\\.[a-z]+)*@" +
+                            "(?:[a-z]+\\.)+[a-zA-Z]{2,7}$";
 
         // Compile the regex
         Pattern p = Pattern.compile(emailRegex);

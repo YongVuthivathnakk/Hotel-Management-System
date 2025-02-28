@@ -65,18 +65,16 @@ public class Admin extends User {
     
     @Override
     public String toString() {
-    return "Admin:" +
-           "\nid=" + id +
-           "\nfirstName=" + getFirstName() +
-           "\nlastName=" + getLastName() +
-           "\nuserName=" + getUserName() +
-           "\nemail=" + getEmail() +
-           "\nphoneNumber=" + getPhoneNumber() +
-           "\nstatus=" + status +
-           "\nsalary=" + salary;
-}
-
-
+    return "=== Admin Info ====\n" +
+           "\nID: " + id +
+           "\nFirst Name: " + getFirstName() +
+           "\nLast Name: " + getLastName() +
+           "\nUser Name: " + getUserName() +
+           "\nEmail:" + getEmail() +
+           "\nPhone Number: " + getPhoneNumber() +
+           "\nStatus: " + status +
+           "\nSalary: $" + salary;
+    }  
 
 
     // Setters

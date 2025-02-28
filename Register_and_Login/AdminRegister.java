@@ -13,6 +13,7 @@ import User.Admin;
     public static void main(String[] args) {
 
 // =================== Variable ========================
+
         Scanner input = new Scanner(System.in);
         String firstName;
         String lastName;
@@ -39,6 +40,8 @@ import User.Admin;
         lastName = input.nextLine().trim().replaceAll(" ", ""); // Remove all empyt space
         
         // Enter the user name
+
+        // TODO: check is the
         System.out.print("Enter your User name: ");
         userName = input.nextLine().trim().replaceAll(" ", "");
         
@@ -92,7 +95,7 @@ import User.Admin;
         
         while (true) {
             try {
-                System.out.println("Enter your Status (1 = Online, 0 = Offline): ");
+                System.out.print("Enter your Status (1 = Online, 0 = Offline): ");
                 tempStatus = input.nextInt();
                 if (tempStatus == 1) {
                     status = "Online";

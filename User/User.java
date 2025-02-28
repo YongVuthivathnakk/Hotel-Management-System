@@ -2,6 +2,8 @@ package User;
 
 import java.util.regex.Pattern;
 
+import Booking.bookingTesting;
+
 public abstract class User {
     protected String firstName;
     protected String lastName;
@@ -56,4 +58,10 @@ public abstract class User {
 
     // method
 
+    public boolean login(){
+        return false;
+    };
+
+    public abstract void register();
+ 
 }
