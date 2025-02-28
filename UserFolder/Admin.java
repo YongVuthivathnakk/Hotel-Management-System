@@ -1,20 +1,21 @@
+package UserFolder;
 import java.util.Scanner;
 
-public class Admin extends User implements Display {
+public class Admin extends User {
     private int id;
     private static int totalID = 0;
     private String password;
     private double salary;
     private String status; // OFFLINE, ONLINE
-
     // Scanner for input operations in methods like changePassword
     private Scanner scanner = new Scanner(System.in);
 
-    public Admin(String firstName, String lastName, String userName, String email, String phoneNumber, Double salary, String status, String password) {
-        super(firstName, lastName, userName, email, phoneNumber, password);
+
+    public Admin(String firstName, String lastName, String userName, String gender, int age ,String email, String phoneNumber, String password, String status, double salary) {
+        super(firstName, lastName, userName, gender, age, email, phoneNumber, password);
         this.id = ++totalID;
-        this.salary = salary;
         this.status = status;
+        this.salary = salary;
     }
 
     // Getters
@@ -30,44 +31,65 @@ public class Admin extends User implements Display {
     // Email
     @Override
     public String getEmail() {
-        // TODO Auto-generated method stub
         return super.getEmail();
     }
 
     // First Name
     @Override
     public String getFirstName() {
-        // TODO Auto-generated method stub
         return super.getFirstName();
     }
 
     // last Name
     @Override
     public String getLastName() {
-        // TODO Auto-generated method stub
+
         return super.getLastName();
     }
 
     @Override
     // Phone Number
     public String getPhoneNumber() {
-        // TODO Auto-generated method stub
+
         return super.getPhoneNumber();
     }
 
     
     @Override
     public String getUserName() {
-        // TODO Auto-generated method stub
         return super.getUserName();
     }
+
     
+    
+    @Override
+    public String getPassword() {
+        return super.getPassword();
+    }
 
     @Override
-    public void display() {
-        // TODO Auto-generated method stub
-        
+    public String toString() {
+    return "=== Admin Info ====\n" +
+           "\nID: " + id +
+           "\nFirst Name: " + getFirstName() +
+           "\nLast Name: " + getLastName() +
+           "\nUser Name: " + getUserName() +
+           "\nEmail:" + getEmail() +
+           "\nPhone Number: " + getPhoneNumber() +
+           "\nStatus: " + status +
+           "\nSalary: $" + salary;
+    }  
+
+
+    // Setters
+    public void setSalary(double inputSalary) {
+        this.salary = inputSalary;
     }
+
+
+
+
+
 
 // ===================================== Change Password =====================================================
 
@@ -128,6 +150,8 @@ public class Admin extends User implements Display {
         System.out.println("Password successfully changed.");
     }
 
+    
+
 
 // =========================================================================================================
 
@@ -139,6 +163,12 @@ public class Admin extends User implements Display {
                                             // NOT YET CUZ NEED FILE IMPLEMENTATION
 
 // ========================================= Accept Checkin and Checkout form Guest =============================================================
+
+    @Override
+    public void register() {
+        // TODO Auto-generated method stub
+        
+    }
 
     /**
      * Processes a checkout request from a user.

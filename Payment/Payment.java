@@ -1,17 +1,19 @@
+package Payment;
 import java.util.ArrayList;
 import java.util.HashMap;
+import TimeGenerator.Time;
 
-public class Payment implements Display {
+public class Payment {
     private static int totalPaymentId = 1;
     private int paymentId;
     private ArrayList<Integer> bookingId = new ArrayList<Integer>(); // to store multiple booking ID in case user has multiple bookings
     private String paymentMethod;
     private String paymentDate;
-    private String paymentTime;
     private String cardNumber;
     private double accpetedCash;
     private String status;
     private double totalPrice;
+    private double changes;
 
     // List for storing all the past payment
     private static HashMap<Integer, Payment> paymentList = new HashMap<Integer, Payment>();
@@ -24,6 +26,7 @@ public class Payment implements Display {
         this.bookingId = bookingId;
         this.accpetedCash = accpetedCash;
         this.totalPrice = totalPrice;
+        this.paymentDate = Time.currentDate();
         this.paymentMethod = "Cash";
         this.status = "Pending";
     }
@@ -33,6 +36,7 @@ public class Payment implements Display {
         this.bookingId = bookingId;
         this.cardNumber = cardNumber;
         this.totalPrice = totalPrice;
+        this.paymentDate = Time.currentDate();
         this.paymentMethod = "Card";
         this.status = "Pending";
     }
@@ -59,10 +63,6 @@ public class Payment implements Display {
         return paymentDate;
     }
 
-    public String getPaymentTime() {
-        return paymentTime;
-    }
-
     public String getCardNumber() {
         return cardNumber;
     }
@@ -79,8 +79,29 @@ public class Payment implements Display {
         return totalPrice;
     }
 
+    public double getChanges(){
+        return changes;
+    }
+
     public static HashMap<Integer, Payment> getPaymentList() {
         return paymentList;
+    }
+
+    // to string
+    @Override
+    public String toString() {
+        return   "-----------------------------------------------------------" + "\n" +
+                 "Payment information for paymentID: "+ paymentId + "\n" +
+                 "BookingId: " + bookingId + "\n" +
+                 "Payment Method: " + paymentMethod + "\n" +
+                 "Payment Date: " + paymentDate + "\n" +
+                 "Card Number: " + cardNumber + "\n" +
+                 "Accepted Cash: $" + accpetedCash + "\n" +
+                 "Sub Price: $" +  "\n" +
+                 "Discount: " + "\n" +
+                 "Total Price: $" + totalPrice + "\n" + 
+                 "Changes: " + changes + "\n" +
+                 "Status: " + status + "\n";
     }
 
     // this equal method is used to check to prevent having duplicated multiple ID
@@ -88,10 +109,9 @@ public class Payment implements Display {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((bookingId == null) ? 0 : bookingId.hashCode());
+        result = prime * result + paymentId;
         return result;
     }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -101,28 +121,24 @@ public class Payment implements Display {
         if (getClass() != obj.getClass())
             return false;
         Payment other = (Payment) obj;
-        if (bookingId == null) {
-            if (other.bookingId != null)
-                return false;
-        } else if (!bookingId.equals(other.bookingId))
+        if (paymentId != other.paymentId)
             return false;
         return true;
     }
     
+    
     // method
-    // Double netTotalCalculation(){
-        
-    // }
-    
-    // void Pay(){
-        
-    // }
-    
-    @Override
-    public void display() {
-        // TODO Auto-generated method stub
-        
+    Double payByCash(double acceptedCash, double totalPrice){
+        Double changes = acceptedCash - totalPrice;
+        this.status = "Done";
+        return changes;
     }
+
+    void payByCard(String cardNumber, double totalPrice){
+
+    }
+    
+
     
     
 }
