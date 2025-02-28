@@ -108,8 +108,6 @@ public class bookingTesting{
  
             scanner.nextLine();
         }
-
-        
         
         while(true){
             try {
@@ -133,6 +131,10 @@ public class bookingTesting{
         
         scanner.close();
     }
+
+
+
+    
 
 
 }
