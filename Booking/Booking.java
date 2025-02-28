@@ -104,16 +104,6 @@ public class Booking {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((roomTypes == null) ? 0 : roomTypes.hashCode());
-        result = prime * result + ((checkInDate == null) ? 0 : checkInDate.hashCode());
-        result = prime * result + ((checkOutDate == null) ? 0 : checkOutDate.hashCode());
-        return result;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
