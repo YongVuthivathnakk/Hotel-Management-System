@@ -1,4 +1,4 @@
-package User;
+package UserFolder;
 import java.util.Scanner;
 
 public class Admin extends User {
@@ -31,35 +31,32 @@ public class Admin extends User {
     // Email
     @Override
     public String getEmail() {
-        // TODO Auto-generated method stub
         return super.getEmail();
     }
 
     // First Name
     @Override
     public String getFirstName() {
-        // TODO Auto-generated method stub
         return super.getFirstName();
     }
 
     // last Name
     @Override
     public String getLastName() {
-        // TODO Auto-generated method stub
+
         return super.getLastName();
     }
 
     @Override
     // Phone Number
     public String getPhoneNumber() {
-        // TODO Auto-generated method stub
+
         return super.getPhoneNumber();
     }
 
     
     @Override
     public String getUserName() {
-        // TODO Auto-generated method stub
         return super.getUserName();
     }
     
@@ -146,6 +143,8 @@ public class Admin extends User {
         System.out.println("Password successfully changed.");
     }
 
+    
+
 
 // =========================================================================================================
 
@@ -157,6 +156,12 @@ public class Admin extends User {
                                             // NOT YET CUZ NEED FILE IMPLEMENTATION
 
 // ========================================= Accept Checkin and Checkout form Guest =============================================================
+
+    @Override
+    public void register() {
+        // TODO Auto-generated method stub
+        
+    }
 
     /**
      * Processes a checkout request from a user.

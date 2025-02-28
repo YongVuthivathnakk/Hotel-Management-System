@@ -1,10 +1,11 @@
 package Register_and_Login;
 import Register_and_Login.Validator;
+import UserFolder.Admin;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Booking.bookingTesting;
-import User.Admin;
 
     public class AdminRegister {
 

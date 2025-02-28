@@ -2,7 +2,7 @@ package Register_and_Login;
 
 import java.util.Scanner;
 
-import User.Admin;
+import UserFolder.Admin;
 
 
 public class AdminLogin {

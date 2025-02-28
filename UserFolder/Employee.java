@@ -1,4 +1,4 @@
-package User;
+package UserFolder;
 public class Employee extends User{
     private int id;
     private String role;
@@ -19,14 +19,12 @@ public class Employee extends User{
     // Email
     @Override
     public String getEmail() {
-        // TODO Auto-generated method stub
         return super.getEmail();
     }
 
 
     @Override
     public String getFirstName() {
-        // TODO Auto-generated method stub
         return super.getFirstName();
     }
 
@@ -34,7 +32,6 @@ public class Employee extends User{
 
     @Override
     public String getLastName() {
-        // TODO Auto-generated method stub
         return super.getLastName();
     }
 
@@ -42,7 +39,7 @@ public class Employee extends User{
 
     @Override
     public String getPhoneNumber() {
-        // TODO Auto-generated method stub
+
         return super.getPhoneNumber();
     }
 
@@ -61,8 +58,14 @@ public class Employee extends User{
         return hireDate;
     }
 
-
+    
+    
     // Method
+    @Override
+    public void register() {
+
+        
+    }
 
 
 }
