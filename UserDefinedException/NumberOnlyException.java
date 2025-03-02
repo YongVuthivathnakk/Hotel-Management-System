@@ -13,4 +13,13 @@ public class NumberOnlyException extends NumberFormatException{
             System.out.println("Your input is valid: "+ inputString);
         }
     }
+
+    public NumberOnlyException(String inputString, String stringFormat, String messageString) throws NumberOnlyException{
+        if (!inputString.matches(stringFormat)) {
+            throw new NumberOnlyException(messageString);
+        }
+        else{
+            System.out.println("You input is valid  " + inputString);
+        }
+    }
 }
