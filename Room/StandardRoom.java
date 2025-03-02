@@ -34,15 +34,7 @@ public class StandardRoom extends Room {
         this.capacity = 2;
         this.roomType = "Standard Room";
         this.pricePerNight = 80;
-        Room.addRoomTypes(this);
-    }
-    
-
-    
-    
+        
+    }    
 }
 
-
-// user superclass
-// admin is user - subclass of user
-// customer also user - subclass of user
