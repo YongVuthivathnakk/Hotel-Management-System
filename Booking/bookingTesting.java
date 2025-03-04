@@ -11,12 +11,10 @@ public class bookingTesting{
         // ---------- variable -------------
         String userName;
         String phoneNumber;
-        ArrayList<String> roomType = new ArrayList<>();
-        ArrayList<Integer> numberOfRoom = new ArrayList<>();
+        ArrayList<RoomBooking> rooms = new ArrayList<>();
         String checkInDate;
         String checkOutDate;
-        ArrayList<String> service = new ArrayList<>();
-        ArrayList<Integer> serviceQuantities = new ArrayList<>();
+        ArrayList<ServiceBooking> services = new ArrayList<>();
         int discount = 0;
         // ---------- variable -------------
 
