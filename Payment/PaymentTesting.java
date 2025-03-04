@@ -4,7 +4,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import CustomException.BelowOrOverLimitException;
+import UserDefinedException.DoubleOnlyException;
+import UserDefinedException.IntegerOnlyException;
+import UserDefinedException.WrongCharacterException;
 
+import java.io.Writer;
 import java.util.ArrayList;
 
 
@@ -19,35 +23,45 @@ public class PaymentTesting {
         double acceptedCash = 0;
         String cardNumber;
         // ---------- variable -------------
+
+        // ----------  temp variable -------------
+        String input = "-1";
+        // ----------  temp variable -------------
         
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            
-            try {
-                while (bookingIdTemp != 0 ) {
-                    System.out.print("Enter the booking ID or 0 to finish : ");
-                    bookingIdTemp = scanner.nextInt();
-                    if (bookingIdTemp != 0) {
-                        bookingId.add(bookingIdTemp);
-                    }
+            try {                
+                System.out.print("Enter the booking ID or 0 to exit: ");
+                input = scanner.nextLine();
+
+                IntegerOnlyException numberOnly = new IntegerOnlyException(input, "^[0-9]+$");
+                if (input.equals("0")) {
+                    break;
                 }
-                break;
-            } catch (InputMismatchException e) {
-                System.out.println("Please enter integer number!");
-                scanner.nextLine();
+                else{
+                    bookingId.add(Integer.parseInt(input));
+                }
+            
+                if (input.equals("0")) {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                    System.out.println(e.getMessage());
             }
-        
+            
         }
 
         while(true){
             try {
                 System.out.print("Enter the total price: ");
-                totalPrice = scanner.nextDouble();
+                input = scanner.nextLine();
+
+                DoubleOnlyException doubleOnly = new DoubleOnlyException(input, "^-?\\d+(\\.\\d+)?$");
+                totalPrice = Double.parseDouble(input);
                 break;
-            } catch (InputMismatchException e) {
-               System.out.println("Please enter either interger or double number!");
-               scanner.nextLine();
+            } catch (DoubleOnlyException e) {
+               System.out.println(e.getMessage());
             }
         }
 
@@ -58,17 +72,12 @@ public class PaymentTesting {
                 System.out.println("1. Cash");
                 System.out.println("2. Credit Card");
                 System.out.print("Select your payment method: ");
-                PaymentMethodNumber = scanner.nextInt();
-
-                if (PaymentMethodNumber < 1 || PaymentMethodNumber > 2) {
-                    throw new BelowOrOverLimitException("We have only two payment methods. Please enter either 1 or 2");
-                }
+                input = scanner.nextLine();
+                IntegerOnlyException intOnly = new IntegerOnlyException(input, "^[12]$", "Please enter either number 1 or 2.");
+                PaymentMethodNumber = Integer.parseInt(input);
                 break;
-            } catch (InputMismatchException e){
-                System.out.println("Please enter the integer number!");
-                scanner.nextLine();
-            } catch (BelowOrOverLimitException e){
-                System.out.println(e.getMessage());
+            } catch (IntegerOnlyException e){
+                System.out.println(e.getMessage());   
             }
         }
                 
@@ -76,20 +85,32 @@ public class PaymentTesting {
             while (true) {
                 try {
                     System.out.print("Enter the accepted cash: ");
-                    acceptedCash = scanner.nextDouble();
+                    input = scanner.nextLine();
+
+                    DoubleOnlyException doubleOnly = new DoubleOnlyException(input, "^-?\\d+(\\.\\d+)?$");
+                    acceptedCash = Integer.parseInt(input);
                     break;
-                } catch (InputMismatchException e) {
-                    System.out.println("Please enter either interger or double number!");
-                    scanner.nextLine();
+                } catch (DoubleOnlyException e) {
+                    System.out.println(e.getMessage());
                 }
             }
             Payment cashPayment = new Payment(bookingId, acceptedCash, totalPrice);
             System.out.println(cashPayment);
         }
         else{
-            scanner.nextLine();
-            System.out.println("Enter the card number: ");
-            cardNumber = scanner.nextLine();
+            while (true) {
+                try {
+                    System.out.println("Enter the card number: ");
+                    input = scanner.nextLine();
+
+                    WrongCharacterException wrongCharacter = new WrongCharacterException(input, "^(\\d{4}[-]?){3}\\d{4}$", "Please enter the card number in this format: XXXX-XXXX-XXXX-XXXX");
+                    cardNumber = input;
+                    break;
+                } catch (WrongCharacterException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            
             Payment cardPayment = new Payment(bookingId, cardNumber, totalPrice);
             System.out.println(cardPayment);
         }

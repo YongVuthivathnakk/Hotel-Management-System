@@ -8,8 +8,11 @@ public class BookingTest2 {
         RoomBooking room1 = new RoomBooking("Deluxe room",2);
         ServiceBooking service1 = new ServiceBooking("Extra bed", 1);
 
+        RoomBooking room2 = new RoomBooking("Standard room", 1);
+
         ArrayList<RoomBooking> roomList = new ArrayList<>();
         roomList.add(room1);
+        roomList.add(room2);
         ArrayList<ServiceBooking> serviceList = new ArrayList<>();
         serviceList.add(service1);
 

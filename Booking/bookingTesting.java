@@ -1,21 +1,20 @@
 package Booking;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
-import CustomException.BelowOrOverLimitException;
 import UserDefinedException.WrongCharacterException;
-import UserDefinedException.NumberOnlyException;
+import UserDefinedException.IntegerOnlyException;
+import UserDefinedException.StringOnlyException;
 
 public class bookingTesting{
     public static void main(String[] args) {
         // ---------- variable -------------
         String userName;
         String phoneNumber;
-        ArrayList<RoomBooking> rooms = new ArrayList<>();
         String checkInDate;
         String checkOutDate;
-        ArrayList<ServiceBooking> services = new ArrayList<>();
         int discount = 0;
+        ArrayList<RoomBooking> bookedRooms = new ArrayList<>();
+        ArrayList<ServiceBooking> bookedService = new ArrayList<>();
         // ---------- variable -------------
 
         // ---------- temp variable --------------
@@ -47,11 +46,11 @@ public class bookingTesting{
             try {
                 System.out.print("Enter the phone number: ");
                 input = scanner.nextLine();
-                NumberOnlyException numberOnly = new NumberOnlyException(input, "^[0-9]+$");
+                IntegerOnlyException numberOnly = new IntegerOnlyException(input, "^[0-9]+$");
                 phoneNumber = input;
                 System.out.println(phoneNumber);
                 break;
-            } catch (NumberOnlyException e) {
+            } catch (IntegerOnlyException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -61,30 +60,91 @@ public class bookingTesting{
                 System.out.print("Enter the room type: ");
                 input = scanner.nextLine();
                 WrongCharacterException character = new WrongCharacterException(input, "^[a-zA-z ]+$", "Please input only uppercase or lowercase, and space is allowed");
-                roomType.add(input);
-
+                roomTypeTemp = input;
+                
                 System.out.print("Enter the number of room: ");
                 input = scanner.nextLine();
-                NumberOnlyException numberOnly = new NumberOnlyException(input, "^[1-9]+$", "Please Enter the number from 1 - 9. Number of room cannot less than 1");
-                numberOfRoom.add(Integer.parseInt(input));
-                for (String iterable_element : roomType) {
-                    for(Integer number_OfRoom : numberOfRoom)
-                    System.out.println(iterable_element + "  " + number_OfRoom);
-                }
+                IntegerOnlyException numberOnly = new IntegerOnlyException(input, "^[1-9]+$", "Please Enter the number from 1 - 9. Number of room cannot less than 1");
+                numberOfRoomTemp =Integer.parseInt(input);
+                RoomBooking bookingRoom = new RoomBooking(roomTypeTemp, numberOfRoomTemp);
+                bookedRooms.add(bookingRoom);
                 break;
+            } catch (WrongCharacterException e) {
+                System.out.println(e.getMessage());
+            } catch (IntegerOnlyException e){
+                System.out.println(e.getMessage());
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.print("Enter the service that you want to add: ");
+                input = scanner.nextLine();
+
+                StringOnlyException stringOnly = new StringOnlyException(input, "^[a-zA-z ]+$");
+                serviceTemp = input;
+
+                System.out.print("Enter the number of service that you want to add: ");
+                input = scanner.nextLine();
+                IntegerOnlyException numberOnly = new IntegerOnlyException(input, "^[1-9]+$", "Please Enter the number from 1 - 9. Number of room cannot less than 1");
+                serviceQuantitesTemp = Integer.parseInt(input);
+
+                ServiceBooking bookingService = new ServiceBooking(serviceTemp, serviceQuantitesTemp);
+                bookedService.add(bookingService);
+
+                break;
+            } catch (StringOnlyException e) {
+                System.out.println(e.getMessage());
+            } catch (IntegerOnlyException e){
+                System.out.println(e.getMessage());
+            }
+
+        }
+
+        while (true) {
+            try {
+                System.out.print("Enter the discount: ");
+                input = scanner.nextLine();
+                IntegerOnlyException numberOnly = new IntegerOnlyException(input, "^(100|[1-9]?[0-9])$", "Please enter number in the range between 0 - 100");
+                discount = Integer.parseInt(input);
+                break;
+            } catch (IntegerOnlyException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+
+        while (true){
+            try {
+                System.out.print("Enter the check-in date: ");
+                input = scanner.nextLine();
+                WrongCharacterException wrongCharacter = new WrongCharacterException(input, "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", "Please enter the the date in this format: YYYY-MM-DD");
+
+                checkInDate = input;
+                break;
+                
             } catch (WrongCharacterException e) {
                 System.out.println(e.getMessage());
             }
         }
 
-        // while (true) {
-        //     try {
+        while (true){
+            try {
+                System.out.print("Enter the check-out date: ");
+                input = scanner.nextLine();
+                WrongCharacterException wrongCharacter = new WrongCharacterException(input, "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", "Please enter the the date in this format: YYYY-MM-DD");
+
+                checkOutDate = input;
+                break;
                 
-        //     } catch (Exception e) {
-        //         // TODO: handle exception
-        //     }
-        // }
+            } catch (WrongCharacterException e) {
+                System.out.println(e.getMessage());
+            }
+        }
         scanner.close();
+
+        Booking booking1 = new Booking(userName, phoneNumber, bookedRooms, discount, checkInDate, checkOutDate, bookedService);
+        System.out.println(booking1);
     }
 
 
