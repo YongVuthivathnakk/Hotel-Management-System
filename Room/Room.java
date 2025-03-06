@@ -38,6 +38,39 @@ public abstract class Room { // abstract here is used for preventing from create
         }
     }
 
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public static HashMap<Integer, Room> getRoomList() {
+        return roomList;
+    }
+
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
+    public void setPricePerNight(double pricePerNight) {
+        this.pricePerNight = pricePerNight;
+    }
+
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+    public static void setRoomList(HashMap<Integer, Room> roomList) {
+        Room.roomList = roomList;
+    }
+
     public static void assigningnNewRoom (String roomType, int roomNumber){
         if(roomList.containsKey(roomNumber)){
             Room assignedRoom = roomList.get(roomNumber);
@@ -77,12 +110,7 @@ public abstract class Room { // abstract here is used for preventing from create
 
     @Override
     public String toString() {
-        return  "--------------------------- Room Information ---------------------------" + "\n" +
-                "Room description: " + description + "\n" +
-                "Capacity: " + capacity + "\n" +
-                "Room type: " + roomType  + "\n" +
-                "Room number: " + roomNumber + "\n" +
-                "Price per night: " + pricePerNight + "\n";
+        return  roomType  + "," + roomNumber + "," + capacity + "," + pricePerNight + ",";
                 
     }
 
