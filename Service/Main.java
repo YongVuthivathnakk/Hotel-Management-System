@@ -8,7 +8,6 @@ public class Main {
         System.out.println("Current directory: " + System.getProperty("user.dir"));
         
         try {
-            // Load file using a relative path based on your project structure
             List<Service> services = ServiceLoader.loadServicesFromFile("Hotel-Management-System/Service/services.txt");
 
             System.out.println("📌 Loaded Services:");
