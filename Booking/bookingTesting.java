@@ -1,5 +1,6 @@
 package Booking;
 import java.util.Scanner;
+import Data.WriteToFile;
 import java.util.ArrayList;
 import UserDefinedException.WrongCharacterException;
 import UserDefinedException.IntegerOnlyException;
@@ -84,10 +85,16 @@ public class bookingTesting{
                 StringOnlyException stringOnly = new StringOnlyException(input, "^[a-zA-z ]+$");
                 serviceTemp = input;
 
-                System.out.print("Enter the number of service that you want to add: ");
-                input = scanner.nextLine();
-                IntegerOnlyException numberOnly = new IntegerOnlyException(input, "^[1-9]+$", "Please Enter the number from 1 - 9. Number of room cannot less than 1");
-                serviceQuantitesTemp = Integer.parseInt(input);
+                if (!serviceTemp.toLowerCase().equals("no")) {     
+                    System.out.print("Enter the number of service that you want to add: ");
+                    input = scanner.nextLine();
+                    IntegerOnlyException numberOnly = new IntegerOnlyException(input, "^[1-9]+$", "Please Enter the number from 1 - 9. Number of room cannot less than 1");
+                    serviceQuantitesTemp = Integer.parseInt(input);
+                }
+                else{
+                    serviceQuantitesTemp = 0;
+                }
+
 
                 ServiceBooking bookingService = new ServiceBooking(serviceTemp, serviceQuantitesTemp);
                 bookedService.add(bookingService);
@@ -143,8 +150,10 @@ public class bookingTesting{
         }
         scanner.close();
 
-        Booking booking1 = new Booking(userName, phoneNumber, bookedRooms, discount, checkInDate, checkOutDate, bookedService);
-        System.out.println(booking1);
+        Booking booking= new Booking(userName, phoneNumber, bookedRooms, discount, checkInDate, checkOutDate, bookedService);
+        Booking.bookingList.put(booking.bookingId, booking);
+        WriteToFile.writer("Data/Booking.txt", Booking.getBookingList());
+        System.out.println(booking);
     }
 
 

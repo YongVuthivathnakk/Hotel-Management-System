@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import CustomException.BelowOrOverLimitException;
+import Data.WriteToFile;
 import UserDefinedException.DoubleOnlyException;
 import UserDefinedException.IntegerOnlyException;
 import UserDefinedException.WrongCharacterException;
@@ -22,6 +23,7 @@ public class PaymentTesting {
         int PaymentMethodNumber = 0;
         double acceptedCash = 0;
         String cardNumber;
+        ArrayList<String[]> loadPaymentData = new ArrayList<>();
         // ---------- variable -------------
 
         // ----------  temp variable -------------
@@ -95,6 +97,8 @@ public class PaymentTesting {
                 }
             }
             Payment cashPayment = new Payment(bookingId, acceptedCash, totalPrice);
+            Payment.getPaymentList().put(cashPayment.getPaymentId(), cashPayment);
+            WriteToFile.writer("Data/Payment.txt", Payment.getPaymentList());
             System.out.println(cashPayment);
         }
         else{
@@ -112,6 +116,8 @@ public class PaymentTesting {
             }
             
             Payment cardPayment = new Payment(bookingId, cardNumber, totalPrice);
+            Payment.getPaymentList().put(cardPayment.getPaymentId(), cardPayment);
+            WriteToFile.writer("Data/Payment.txt", Payment.getPaymentList());
             System.out.println(cardPayment);
         }
         

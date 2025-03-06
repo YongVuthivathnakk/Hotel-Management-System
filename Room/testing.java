@@ -65,7 +65,7 @@ public class testing {
 
             Room.assigningnNewRoom(roomType, roomNumber);
             System.out.println(Room.roomList.get(roomNumber));
-             WriteToFile.writer("Data/Room_data.txt", Room.getRoomList());
+            WriteToFile.writer("Data/Room_data.txt", Room.getRoomList());
 
         }
         else{

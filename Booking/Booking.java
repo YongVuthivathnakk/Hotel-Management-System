@@ -1,23 +1,25 @@
 package Booking;
 
+import java.security.Provider.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import Room.Room;
 import TimeGenerator.Time;
 
 public class Booking {
-    private static int totalBookingId = 0;
-    private int bookingId;
-    private String userName;
-    private String phoneNumber; 
-    private ArrayList<RoomBooking> rooms = new ArrayList<RoomBooking>();
-    private int discount;
-    private String bookingDate;
-    private String checkInDate;
-    private String checkOutDate;
-    private ArrayList<ServiceBooking> services = new ArrayList<ServiceBooking>();
+    protected static int totalBookingId = 0;
+    protected int bookingId;
+    protected String userName;
+    protected String phoneNumber; 
+    protected ArrayList<RoomBooking> rooms = new ArrayList<RoomBooking>();
+    protected int discount;
+    protected String bookingDate;
+    protected String checkInDate;
+    protected String checkOutDate;
+    protected ArrayList<ServiceBooking> services = new ArrayList<ServiceBooking>();
 
-    private static HashMap <Integer, Booking> bookingList = new HashMap<Integer, Booking>();
+    protected static HashMap <Integer, Booking> bookingList = new HashMap<Integer, Booking>();
 
     public Booking(String userName, String phoneNumer, ArrayList<RoomBooking> rooms, int discount, String checkInDate, String checkOutDate, ArrayList<ServiceBooking> services) {
         this.bookingId = ++totalBookingId;
@@ -77,37 +79,79 @@ public class Booking {
         return bookingList;
     }
 
-   @Override
+
+
+    
+   public static void setTotalBookingId(int totalBookingId) {
+        Booking.totalBookingId = totalBookingId;
+    }
+
+    public void setBookingId(int bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setRooms(ArrayList<RoomBooking> rooms) {
+        this.rooms = rooms;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    public void setBookingDate(String bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    public void setCheckInDate(String checkInDate) {
+        this.checkInDate = checkInDate;
+    }
+
+    public void setCheckOutDate(String checkOutDate) {
+        this.checkOutDate = checkOutDate;
+    }
+
+    public void setServices(ArrayList<ServiceBooking> services) {
+        this.services = services;
+    }
+
+    public static void setBookingList(HashMap<Integer, Booking> bookingList) {
+        Booking.bookingList = bookingList;
+    }
+
+@Override
     public String toString() {
         StringBuilder roomDetails = new StringBuilder();
         StringBuilder serviceDetails = new StringBuilder();
         
         for (RoomBooking room : rooms) {
             roomDetails.append(room.getRoomType())  
-                    .append("\t\t")
+                    .append(",")
                     .append(room.getroomQuantites()) 
-                    .append("\n");  
+                    .append(",");  
         }
 
         for (ServiceBooking service : services) {
             roomDetails.append(service.getService())  
-                    .append("\t\t")
+                    .append(",")
                     .append(service.getServiceQuantities())
-                    .append("\n"); 
+                    .append(","); 
         }
 
 
-        return "                            Booking Information                                    " + "\n" + 
-            "-----------------------------------------------------------------------------------" + "\n" + 
-            "Booking ID: " + getBookingId() + "\t\t\t" + "Booking date: " + getBookingDate() + "\n" +
-            "Customer name: " + getUserName() + "\t\t" + "Customer phone number: " + getPhoneNumber() + "\n" +
-            "Check-in date: " + getCheckInDate() + "\t" + "Check-out date: " + getCheckOutDate() + "\n" +
-            "Room / Service" + "\t\t\t" + "Qty" + "\t" + "Price Per Unit" + "\t" + "Price" + "\n" +
-            roomDetails.toString() + "\n" +
-            serviceDetails.toString();
+        return 
+            
+            getBookingId() + "," + getUserName() + "," + getPhoneNumber() + ","  + getCheckInDate() + ","  + getCheckOutDate() + "," + roomDetails.toString() + "," + serviceDetails.toString();
 }
 
-
+// Booking ID,Customer name,Customer phone number, Room, RoomQty, Room Price Per Unit, Room Price, Service, ServiceQty, Service Price Per Unit, Service price, Booking date, Check-in date, Check-out date,
         
     
      
