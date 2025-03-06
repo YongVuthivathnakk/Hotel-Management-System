@@ -1,0 +1,28 @@
+Extra Bed,20,Bed Service
+Continental Breakfast,15,Breakfast Service
+Room Cleaning,30,Room Service
+Laundry Service,25,Room Service
+
+// Food Items
+Margherita Pizza,12,Room Service
+Cheeseburger with Fries,14,Room Service
+Caesar Salad,10,Room Service
+Grilled Chicken Sandwich,13,Room Service
+Pasta Alfredo,16,Room Service
+Steak with Mashed Potatoes,25,Room Service
+Vegetable Stir-Fry,14,Room Service
+Club Sandwich,12,Room Service
+French Toast with Maple Syrup,10,Room Service
+Chocolate Lava Cake,9,Room Service
+
+// Drinks
+Espresso,5,Room Service
+Cappuccino,6,Room Service
+Latte,6,Room Service
+Black Tea,4,Room Service
+Green Tea,4,Room Service
+Fresh Orange Juice,7,Room Service
+Mineral Water,3,Room Service
+Soft Drink (Cola/Sprite),4,Room Service
+Red Wine (Glass),15,Room Service
+White Wine (Glass),15,Room Service
