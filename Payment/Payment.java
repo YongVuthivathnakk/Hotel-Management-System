@@ -106,13 +106,6 @@ public class Payment {
 
     // this equal method is used to check to prevent having duplicated multiple ID
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + paymentId;
-        return result;
-    }
-    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;

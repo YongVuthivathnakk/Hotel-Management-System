@@ -1,40 +1,35 @@
 package Booking;
 
-import TimeGenerator.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+import TimeGenerator.Time;
 
 public class Booking {
-    private static int totalBookingId = 1;
+    private static int totalBookingId = 0;
     private int bookingId;
     private String userName;
-    private String phoneNumer; 
-    ArrayList<String> roomTypes = new ArrayList<String>();
-    ArrayList<Integer> roomQuantites = new ArrayList<Integer>();
+    private String phoneNumber; 
+    private ArrayList<RoomBooking> rooms = new ArrayList<RoomBooking>();
     private int discount;
     private String bookingDate;
     private String checkInDate;
     private String checkOutDate;
-    ArrayList<String> services = new ArrayList<String>();
-    ArrayList<Integer> serviceQuantities = new ArrayList<Integer>();
+    private ArrayList<ServiceBooking> services = new ArrayList<ServiceBooking>();
 
     private static HashMap <Integer, Booking> bookingList = new HashMap<Integer, Booking>();
 
-    public Booking(String userName, String phoneNumer, ArrayList<String> roomTypes, ArrayList<Integer> roomQuantites, int discount, String checkInDate, String checkOutDate, ArrayList<String> services, ArrayList<Integer> serviceQuantities) {
-        this.bookingId = totalBookingId++;
+    public Booking(String userName, String phoneNumer, ArrayList<RoomBooking> rooms, int discount, String checkInDate, String checkOutDate, ArrayList<ServiceBooking> services) {
+        this.bookingId = ++totalBookingId;
         this.userName = userName;
-        this.phoneNumer = phoneNumer;
-        this.roomTypes = roomTypes;
-        this.roomQuantites = roomQuantites;
+        this.phoneNumber = phoneNumer;
+        this.rooms = rooms;
         this.discount = discount;
+        this.bookingDate = Time.currentDate();
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.services = services;
-        this.serviceQuantities = serviceQuantities;
-        this.bookingDate = Time.currentDate();
-    
+        
         bookingList.put(this.bookingId, this);
     }
 
@@ -50,16 +45,16 @@ public class Booking {
         return userName;
     }
 
-    public String getPhoneNumer() {
-        return phoneNumer;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public ArrayList<String> getRoomTypes() {
-        return roomTypes;
+    public ArrayList<RoomBooking> getRooms() {
+        return rooms;
     }
 
-    public ArrayList<Integer> getRoomQuantites() {
-        return roomQuantites;
+    public ArrayList<ServiceBooking> getServices() {
+        return services;
     }
 
     public int getDiscount() {
@@ -78,68 +73,44 @@ public class Booking {
         return checkOutDate;
     }
 
-    public ArrayList<String> getServices() {
-        return services;
-    }
-
-    public ArrayList<Integer> getServiceQuantities() {
-        return serviceQuantities;
-    }
-
     public static HashMap<Integer, Booking> getBookingList() {
         return bookingList;
     }
 
-    @Override
+   @Override
     public String toString() {
+        StringBuilder roomDetails = new StringBuilder();
+        StringBuilder serviceDetails = new StringBuilder();
+        
+        for (RoomBooking room : rooms) {
+            roomDetails.append(room.getRoomType())  
+                    .append("\t\t")
+                    .append(room.getroomQuantites()) 
+                    .append("\n");  
+        }
+
+        for (ServiceBooking service : services) {
+            roomDetails.append(service.getService())  
+                    .append("\t\t")
+                    .append(service.getServiceQuantities())
+                    .append("\n"); 
+        }
+
+
         return "                            Booking Information                                    " + "\n" + 
-               "-----------------------------------------------------------------------------------" + "\n" + 
-               "Booking ID: " + getBookingId() + "\t\t\t" + "Booking date: " + getBookingDate() + "\n" +
-               "Customer name: " + getUserName() + "\t\t" + "Customer phone number: " + getPhoneNumer() + "\n" +
-               "Check-in date: " + getCheckInDate() + "\t" + "Check-out date: " + getCheckOutDate() + "\n" +
-               "Room / Service" + "\t\t\t" + "Qty" + "\t" + "Price Per Unit" + "\t" + "Price" + "\n" +
-               getRoomTypes() + "\t\t\t" + getRoomQuantites() + "\t\t\t" + "\n" +
-               getServices() + "\t\t\t" + getServiceQuantities();
+            "-----------------------------------------------------------------------------------" + "\n" + 
+            "Booking ID: " + getBookingId() + "\t\t\t" + "Booking date: " + getBookingDate() + "\n" +
+            "Customer name: " + getUserName() + "\t\t" + "Customer phone number: " + getPhoneNumber() + "\n" +
+            "Check-in date: " + getCheckInDate() + "\t" + "Check-out date: " + getCheckOutDate() + "\n" +
+            "Room / Service" + "\t\t\t" + "Qty" + "\t" + "Price Per Unit" + "\t" + "Price" + "\n" +
+            roomDetails.toString() + "\n" +
+            serviceDetails.toString();
+}
 
-    }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((roomTypes == null) ? 0 : roomTypes.hashCode());
-        result = prime * result + ((checkInDate == null) ? 0 : checkInDate.hashCode());
-        result = prime * result + ((checkOutDate == null) ? 0 : checkOutDate.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Booking other = (Booking) obj;
-        if (roomTypes == null) {
-            if (other.roomTypes != null)
-                return false;
-        } else if (!roomTypes.equals(other.roomTypes))
-            return false;
-        if (checkInDate == null) {
-            if (other.checkInDate != null)
-                return false;
-        } else if (!checkInDate.equals(other.checkInDate))
-            return false;
-        if (checkOutDate == null) {
-            if (other.checkOutDate != null)
-                return false;
-        } else if (!checkOutDate.equals(other.checkOutDate))
-            return false;
-        return true;
-    }
-
+        
+    
+     
     
     // public double subRoomTotalPrice(){
 

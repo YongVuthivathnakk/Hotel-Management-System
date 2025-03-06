@@ -3,8 +3,8 @@ public class Suite extends Room {
     Suite(){
         this.description = "";
         this.capacity = 2;
-        this.roomType = "Standard Room";
-        this.pricePerNight = 80;
+        this.roomType = "Suite";
+        this.pricePerNight = 280;
     }
     
 }
