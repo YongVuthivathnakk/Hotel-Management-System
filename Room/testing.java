@@ -25,7 +25,7 @@ public class testing {
                 System.out.println("here are the function that available");
                 System.out.println("1. Assign new room number and save / write data to file");
                 System.out.println("2. Load the program / read data from file");
-                System.out.println("Enter the function number that you want to do");
+                System.out.print("Enter the function number that you want to do: ");
                 input = scanner.nextLine();
                 functionNumber = Integer.parseInt(input);
                 IntegerOnlyException intOnly = new IntegerOnlyException(input, "^[12]$", "Please enter either number 1 or 2 since there are only two function");
@@ -65,19 +65,6 @@ public class testing {
 
             Room.assigningnNewRoom(roomType, roomNumber);
             System.out.println(Room.roomList.get(roomNumber));
-
-            try {
-                BufferedWriter roomWriter = new BufferedWriter(new FileWriter("Data/Room_data.txt", true));
-                for (Room room : Room.roomList.values()) {
-                    roomWriter.write(room.toString());
-                    roomWriter.newLine();
-                }
-                roomWriter.close();
-            } catch (IOException e) {
-                System.out.println("An IO Exception occured: " + e.getMessage());
-                e.printStackTrace();
-            }
-
              WriteToFile.writer("Data/Room_data.txt", Room.getRoomList());
 
         }
