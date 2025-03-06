@@ -22,7 +22,7 @@ public class Validator {
          // Regular expression to check if
         // the number starts with
         // 7, 8, or 9, followed by 9 digits
-        String number = "^[7-9][0-9]{9}$";
+        String number = "^[7-9][0-9]{8,9}?$";
 
         if (phoneNumber.trim().matches(number)) {
             return true;

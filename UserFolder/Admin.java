@@ -5,19 +5,23 @@ import java.util.Scanner;
 import Register_and_Login.Validator;
 
 public class Admin extends User {
-    private int id;
-    private static int totalID = 0;
+    private String type = "Admin";
     private String password;
     private double salary;
     private String status; // OFFLINE, ONLINE
+    public static int count = 0;
+    private int id;
     // Scanner for input operations in methods like changePassword
     private Scanner scanner = new Scanner(System.in);
 
+    public Admin() {
+        super();
+    }
 
     public Admin(String firstName, String lastName, String userName, String gender, int age ,String email, String phoneNumber, String password, String status, double salary) {
         super(firstName, lastName, userName, gender, age, email, phoneNumber, password);
-        this.id = ++totalID;
         this.status = status;
+        this.id = count++;
         this.salary = salary;
     }
 
@@ -34,24 +38,23 @@ public class Admin extends User {
     // To String
     @Override
     public String toString() {
-        return " == Admin " + id + " ==" +
-        "\nStatus=" + status + 
+        return " == Admin 0" + id + " ==" +
+        "\nStatus: " + status + 
         super.toString();
     }
 
 
     
     @Override
-    public void register() {
-        Scanner input = new Scanner(System.in);
+    public void register(Scanner input) {
         int tempStatus;
         double salary;
 
         System.out.println("== Register as Admin ==");
 
-        super.register();
+        super.register(input);
 
-
+        // Enter status
 
         while (true) {
             try {
@@ -69,10 +72,13 @@ public class Admin extends User {
                     System.out.println("Sorry, wrong input !!!");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Please enter interger!");
-                input.nextLine(); // clear buffer
+                System.out.println("Please enter either 1 or 0 !!!");
+                input.nextLine();
             }
         }
+
+
+        // Enter salary
 
         while (true) {
             try {
@@ -82,17 +88,33 @@ public class Admin extends User {
                     input.nextLine();
                     this.salary = salary;
                     break;
+                } else {
+                    System.out.println("Salary must be equal to or more than 100 !!!");
+                    input.nextLine();
                 }
-                break;
+                
             } catch (InputMismatchException e) {
-               System.out.println("Please enter either interger or double number!");
-               input.nextLine();
-            }
+                System.out.println("Please enter an integer or double !!!");
+                input.nextLine();
+            }  
         }
 
+        // End of register
+        System.out.println("Admin registered successfully !!!");
+    }
 
-        input.close();
 
+
+
+
+
+
+
+
+
+    @Override
+    public String toCSV() {
+        return type + "," + id + "," + salary + "," + super.toCSV() + "," + status;
     }
 
     // Setters
@@ -101,12 +123,6 @@ public class Admin extends User {
     }
     
 
-
-public static void main(String[] args) {
-    User newAdmin = new Admin(null, null, null, null, 0, null, null, null, null, 0);
-    newAdmin.register();
-    System.out.println(newAdmin.toString());
-}
 
 }
 

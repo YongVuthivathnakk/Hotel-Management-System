@@ -1,10 +1,9 @@
 package UserFolder;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.regex.Pattern;
-
-import Booking.bookingTesting;
 import Register_and_Login.Validator;
 
 public abstract class User {
@@ -12,13 +11,16 @@ public abstract class User {
     protected String lastName;
     protected String email;
     protected String phoneNumber;
-    protected String userName;
+    protected String username;
     protected String password;
     protected String gender;
     protected int age;
+    public static HashMap<String, User> userMap = new HashMap<>();
 
+    public User() {
+    }
 
-    public User(String firstName, String lastName, String userName, String gender, int age ,String email, String phoneNumber, String password) {
+    public User(String firstName, String lastName, String username, String gender, int age ,String email, String phoneNumber, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -26,7 +28,9 @@ public abstract class User {
         this.age = age;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        this.userName = userName;
+        this.username = username;
+        // Auto matically add this user to the HashMap
+        userMap.put(username, this);
     }
 
     // Getters
@@ -46,8 +50,8 @@ public abstract class User {
         return this.phoneNumber;
     }
 
-    public String getUserName() {
-        return this.userName;
+    public String getUsername() {
+        return this.username;
     }
 
     public String getGender() {
@@ -63,6 +67,11 @@ public abstract class User {
     }
 
 
+    public static Map<String, User> listAllUsers() {
+        return userMap;
+    }
+
+    
     // method
 
     
@@ -79,7 +88,7 @@ public abstract class User {
         System.out.print("Passowrd: ");
         inputPassword = input.nextLine();
 
-        if (inputUserName.equals(this.userName) && inputPassword.equals(this.password)) {
+        if (inputUserName.equals(this.username) && inputPassword.equals(this.password)) {
             input.close();
             return true;
         } else {
@@ -89,18 +98,16 @@ public abstract class User {
     };
 
 
-    public void register() {
+    public void register(Scanner input) {
         
 // =================== Variable ========================
 
-        Scanner input = new Scanner(System.in);
-        String lastName;
-        String userName;
-        String gender;
-        int age;
-        String email;
-        String phoneNumber;
-        String password;
+        String inputUsername;
+        String inputGender;
+        int inputAge;
+        String inputEmail;
+        String inputPhoneNumber;
+        String inputPassword;
         Validator validate = new Validator();
 
 // ======================================================
@@ -114,88 +121,107 @@ public abstract class User {
         this.lastName = input.nextLine().trim().replaceAll(" ", ""); // Remove all empyt space
         
         // Enter the user name
-        System.out.print("Enter your User name: ");
-        this.userName = input.nextLine().trim().replaceAll(" ", "");
+        while (true) {
+            System.out.print("Enter your Username: ");
+            inputUsername = input.nextLine().trim().replaceAll(" ", "");
+            if(User.listAllUsers().containsKey(inputUsername)) {
+                System.out.println("Username already exist!! Please try again.");
+            } else {
+                this.username = inputUsername;
+                break;
+            }
+        }
         
         // Enter gender
         
         while (true) {
             System.out.print("Enter your gender (M / F): ");
-            gender = input.nextLine();
-            if(gender.toUpperCase().equals("M") || gender.toUpperCase().equals("F")) {
-                this.gender = gender;
+            inputGender = input.nextLine();
+            if(inputGender.toUpperCase().equals("M") || inputGender.toUpperCase().equals("F")) {
+                this.gender = inputGender;
                 break;
             } else {
                 System.out.println("Please Try again!! Gender must be (M / F).");
             }
         }
 
+        // Enter Age
+
         while (true) {
             try {
                 System.out.print("Enter your age: ");
-                age = input.nextInt();
-                if (age > 18 && age <= 60) {
-                    this.age = age;
+                inputAge = input.nextInt();
+                if (inputAge > 18 && inputAge <= 60) {
+                    this.age = inputAge;
                     input.nextLine(); // clear buffer
                     break;
                 } else {
                     System.out.println("Age must be 18 - 60 !!!");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Please enter interger!");
+                System.out.println("Please enter integer number !!!");
                 input.nextLine(); // clear buffer
             }
         }
 
+        // Enter Email
+
         while (true) {
             System.out.print("Enter your email address: ");
-            email = input.nextLine().replaceAll(" ", "");
-            if (validate.isEmailValid(email)) {
-                this.email = email;
+            inputEmail = input.nextLine().replaceAll(" ", "");
+            if (validate.isEmailValid(inputEmail)) {
+                this.email = inputEmail;
                 break;
             } else {
                 System.out.println("Wrong email address format!!");
             }
+    
         }
+
+        // Enter Phone number
 
         while (true) {
             System.out.print("Enter your phone number: ");
-            phoneNumber = input.nextLine().trim().replaceAll(" ", "");
-            if (validate.isPhoneNumberValid(phoneNumber)) {
-                this.phoneNumber = phoneNumber;
+            inputPhoneNumber = input.nextLine().trim().replaceAll(" ", "");
+            if (validate.isPhoneNumberValid(inputPhoneNumber)) {
+                this.phoneNumber = inputPhoneNumber;
                 break;
             } else {
-                System.out.println("Your number must start with [7-9] and followed by [0-9] of 9 digits.");
+                System.out.println("Your number must start with [7-9] and followed by [0-9] of 10 digits.");
             }
         }
         
+        // Enter password
 
         while (true) {
             System.out.print("Enter your Password: ");
-            password = input.nextLine();
-            if (password.length() >= 8) {
-                this.password = password;
+            inputPassword = input.nextLine();
+            if (inputPassword.length() >= 8) {
+                this.password = inputPassword;
                 break;
             } else {
                 System.out.println("Your password is too short !!!");
             }
         }
-        
-        input.close();
+        userMap.put(username, this);
         
     }
 
 
+
+    public String toCSV() {
+        return firstName + "," + lastName + "," + username + "," + gender + "," + email + "," + age + "," + phoneNumber + "," + password;
+    }
+    
     @Override
     public String toString() {
         return "\nFirst Name: " + firstName + 
                 "\nLast Name: " + lastName + 
                 "\nEmail: " + email + 
                 "\nPhone Number: " + phoneNumber + 
-                "\nUser Name=" + userName + 
-                "\nPassword=" + password + 
-                "\nGender=" + gender + 
-                "\nAge: " + age;
+                "\nUser Name: " + username + 
+                "\nGender: " + gender + 
+                "\nAge: " + age + "\n";
     }
 
     
