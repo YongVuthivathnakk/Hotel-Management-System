@@ -10,7 +10,7 @@ public class Main {
         try {
             List<Service> services = ServiceLoader.loadServicesFromFile("Hotel-Management-System/Service/services.txt");
 
-            System.out.println("📌 Loaded Services:");
+            System.out.println("Loaded Services:");
             for (Service service : services) {
                 System.out.println(service);
             }

@@ -1,57 +1,25 @@
 package Room;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
-import CustomException.BelowOrOverLimitException;
-
 public class testing {
     public static void main(String[] args) {
+        // Clear data before loading to prevent duplication
+        System.out.println("Cleared roomNumbersForEachRoomType map."); // Debugging
+        Room.roomNumbersForEachRoomType.clear();
 
-        String roomType;
-        int roomNumber;
+        // Load previous room data from file
+        System.out.println("Loading room data..."); // Debugging
+        Room.loadRoomData(); // Load previous data
 
+        // Create and save new rooms
+        System.out.println("Creating rooms..."); // Debugging
+        RoomInitializer.createRooms(); // Create and save new rooms
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the type of room that you want to add: ");
-        roomType = scanner.nextLine();
-
-        while (true) {
-            try {
-                System.out.print("Enter the room number: ");
-                roomNumber = scanner.nextInt();
-                if (roomNumber < 100) {
-                    throw new BelowOrOverLimitException("Room number must start from 100");
-                }
-                break;
-            } catch (InputMismatchException e) {
-                System.out.println("Please enter integer number!");
-                scanner.nextLine();
-            } catch(BelowOrOverLimitException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-        scanner.close();
-
-        Room.assignRoomNumberForEachRoomType(roomType, roomNumber);
-
-        Room.assignRoomNumberForEachRoomType("Standard Room", 101);
-        Room.assignRoomNumberForEachRoomType("Standard Room", 102);
-        Room.assignRoomNumberForEachRoomType("Standard Room", 103);
-        Room.assignRoomNumberForEachRoomType("Standard Room", 104);
-        
-        Room.assignRoomNumberForEachRoomType("Deluxe Room", 206);
-        Room.assignRoomNumberForEachRoomType("Deluxe Room", 207);
-        Room.assignRoomNumberForEachRoomType("Deluxe Room", 208);
-        
-        Room.assignRoomNumberForEachRoomType("Standard Room", 105);
-        System.out.println("Room numbers that are Standard Room" + " " + Room.roomNumbersForEachRoomType.get("Standard Room"));
-
-        Room.assignRoomNumberForEachRoomType("Deluxe Room", 209);
-        System.out.println("Room numbers that are Deluxe Room" + " " + Room.roomNumbersForEachRoomType.get("Deluxe Room"));
-
-        System.out.println("Room number that are suite" + " " + Room.roomNumbersForEachRoomType.get("Suite"));
-
+        // Display all rooms
+        System.out.println("\nRoom Numbers By Type:");
+        Room.displayRoomsByType("Standard Room");
+        Room.displayRoomsByType("Deluxe Room");
+        Room.displayRoomsByType("Suite");
+        Room.displayRoomsByType("Family Room");
+        Room.displayRoomsByType("VIP Room");
     }
-
 }
