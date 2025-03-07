@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import CustomException.InputMismatchException;
@@ -11,38 +12,14 @@ import CustomException.InputMismatchException;
 
 
 public class Test {
-
-    public static void writeToFile(User user) {
-        if(user instanceof Admin) {
-            try {
-                FileWriter fileWriter = new FileWriter("admin_data.csv");
-                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                PrintWriter printWriter = new PrintWriter(bufferedWriter);
-                printWriter.println("Type,ID,Salary,First_Name,Last_Name,Username,Gender,Age,Email,Phone_Number,Password,Status");
-                printWriter.println(user.toCSV());
-                printWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            } else if(user instanceof Employee) {
-                try {
-                    FileWriter fileWriter = new FileWriter("employee_data.csv", true);
-                    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                    PrintWriter printWriter = new PrintWriter(bufferedWriter);
-                    printWriter.println("Type,ID,Role,Salary,Hire_Date,First_Name,Last_Name,Username,Gender,Age,Email,Phone_Number,Password,Status");
-                    printWriter.println(user.toCSV());
-                    printWriter.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
     // public static void readFromFile() {
     //     FileReader fileReader = new FileReader();
     // }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        ArrayList<Admin> adminList = new ArrayList<>();
+        ArrayList<Employee> employeeList = new ArrayList<>();
+        // ArrayList<Guest> guestList = new ArrayList<>();
         int choice = 0;
         do {
             System.out.println("\n--- User Menu ---");
