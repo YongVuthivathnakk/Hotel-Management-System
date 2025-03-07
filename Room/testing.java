@@ -92,32 +92,7 @@ public class testing {
             }
         }
 
-
-        
-
-
         scanner.close();
-        
-        
-        
-       
-        
-        // try {
-        //     BufferedReader roomReader = new BufferedReader(new FileReader("Data/Room_data.txt"));
-        //     String line;
-        //     String[] word;
-        //     ArrayList<String[]> words = new ArrayList<>();
-        //     while ((line = roomReader.readLine()) != null) {
-        //         word = line.split(",");
-        //         words.add(word);
-        //     }
-        //     for (String[] string : words) {
-        //         System.out.println(string);
-        //     }
-        //     roomReader.close();
-        // } catch (Exception e) {
-        //     e.printStackTrace();
-        // }
         
     }
 
