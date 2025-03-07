@@ -1,0 +1,26 @@
+roomNumber | roomType | capacity | pricePerNight | description
+101 | Standard Room | 2 | 80.0 | A cozy standard hotel room with basic amenities.
+102 | Standard Room | 2 | 80.0 | A cozy standard hotel room with basic amenities.
+103 | Standard Room | 2 | 80.0 | A cozy standard hotel room with basic amenities.
+104 | Standard Room | 2 | 80.0 | A cozy standard hotel room with basic amenities.
+105 | Standard Room | 2 | 80.0 | A cozy standard hotel room with basic amenities.
+201 | Deluxe Room | 3 | 120.0 | A spacious deluxe room with additional amenities.
+202 | Deluxe Room | 3 | 120.0 | A spacious deluxe room with additional amenities.
+203 | Deluxe Room | 3 | 120.0 | A spacious deluxe room with additional amenities.
+204 | Deluxe Room | 3 | 120.0 | A spacious deluxe room with additional amenities.
+205 | Deluxe Room | 3 | 120.0 | A spacious deluxe room with additional amenities.
+301 | Suite | 4 | 180.0 | A luxurious suite with separate living area and extra facilities.
+302 | Suite | 4 | 180.0 | A luxurious suite with separate living area and extra facilities.
+303 | Suite | 4 | 180.0 | A luxurious suite with separate living area and extra facilities.
+304 | Suite | 4 | 180.0 | A luxurious suite with separate living area and extra facilities.
+305 | Suite | 4 | 180.0 | A luxurious suite with separate living area and extra facilities.
+401 | Family Room | 5 | 220.0 | A family-friendly room with more space and multiple beds.
+402 | Family Room | 5 | 220.0 | A family-friendly room with more space and multiple beds.
+403 | Family Room | 5 | 220.0 | A family-friendly room with more space and multiple beds.
+404 | Family Room | 5 | 220.0 | A family-friendly room with more space and multiple beds.
+405 | Family Room | 5 | 220.0 | A family-friendly room with more space and multiple beds.
+501 | VIP Room | 6 | 300.0 | An ultra-luxury VIP room with top-tier services.
+502 | VIP Room | 6 | 300.0 | An ultra-luxury VIP room with top-tier services.
+503 | VIP Room | 6 | 300.0 | An ultra-luxury VIP room with top-tier services.
+504 | VIP Room | 6 | 300.0 | An ultra-luxury VIP room with top-tier services.
+505 | VIP Room | 6 | 300.0 | An ultra-luxury VIP room with top-tier services.
