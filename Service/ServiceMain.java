@@ -54,15 +54,17 @@ public class ServiceMain {
                 System.out.println(e.getMessage());
             }
 
-            Service service = new Service(serviceName, price, category);
-
-            WriteToFile.writer("services.txt", Service.getServiceList());
+            WriteToFile.writer("Data/services.txt", Service.getServiceList());
         }
         else{
             ArrayList<String[]> loadedServiceData = new ArrayList<>();
-            ReadFromFile.reader("services.txt", loadedServiceData);
+            ReadFromFile.reader("Data/services.txt", loadedServiceData);
             for (String[] words : loadedServiceData) {
-                
+                serviceName = words[0];
+                price = Double.parseDouble(words[1]);
+                category = words[2];
+                Service service = new Service(serviceName, price, category);
+                System.out.println(service);
             }
         }
 

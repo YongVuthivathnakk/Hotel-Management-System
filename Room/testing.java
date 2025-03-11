@@ -79,6 +79,30 @@ public class testing {
                     room.setPricePerNight(Double.parseDouble(words[3]));
                     Room.roomList.put(Integer.parseInt(words[1]), room);
                 }
+                else if (words[0].toLowerCase().equals("deluxe room".toLowerCase())) {
+                    Room room = new DeluxeRoom();
+                    room.setRoomType(words[0]);
+                    room.setRoomNumber(Integer.parseInt(words[1]));
+                    room.setCapacity(Integer.parseInt(words[2]));
+                    room.setPricePerNight(Double.parseDouble(words[3]));
+                    Room.roomList.put(Integer.parseInt(words[1]), room);
+                }
+                else if (words[0].toLowerCase().equals("family room".toLowerCase())) {
+                    Room room = new FamilyRoom();
+                    room.setRoomType(words[0]);
+                    room.setRoomNumber(Integer.parseInt(words[1]));
+                    room.setCapacity(Integer.parseInt(words[2]));
+                    room.setPricePerNight(Double.parseDouble(words[3]));
+                    Room.roomList.put(Integer.parseInt(words[1]), room);
+                }
+                else if (words[0].toLowerCase().equals("suite".toLowerCase())) {
+                    Room room = new Suite();
+                    room.setRoomType(words[0]);
+                    room.setRoomNumber(Integer.parseInt(words[1]));
+                    room.setCapacity(Integer.parseInt(words[2]));
+                    room.setPricePerNight(Double.parseDouble(words[3]));
+                    Room.roomList.put(Integer.parseInt(words[1]), room);
+                }
                 else{
                     continue;
                 }

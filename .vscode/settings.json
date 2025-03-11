@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "e:\\Uni\\Sophomore\\Term 2\\OOP ( Java )\\mysql-connector-j-9.1.0.jar"
+        "e:\\Uni\\Sophomore\\Term 2\\OOP ( Java )\\mysql-connector-j-9.1.0.jar",
+        "d:\\School\\Sophormore term 2\\OOP project\\mysql-connector-j-9.1.0.jar"
     ]
 }

@@ -1,6 +1,5 @@
 package Booking;
 
-import java.security.Provider.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,27 +11,39 @@ public class Booking {
     protected int bookingId;
     protected String userName;
     protected String phoneNumber; 
-    protected ArrayList<RoomBooking> rooms = new ArrayList<RoomBooking>();
+    protected ArrayList<RoomBooking> rooms;
     protected int discount;
     protected String bookingDate;
     protected String checkInDate;
     protected String checkOutDate;
-    protected ArrayList<ServiceBooking> services = new ArrayList<ServiceBooking>();
+    protected ArrayList<ServiceBooking> services;
 
     protected static HashMap <Integer, Booking> bookingList = new HashMap<Integer, Booking>();
 
-    public Booking(String userName, String phoneNumer, ArrayList<RoomBooking> rooms, int discount, String checkInDate, String checkOutDate, ArrayList<ServiceBooking> services) {
+    public Booking(String userName, String phoneNumber, int discount, String checkInDate, String checkOutDate) {
         this.bookingId = ++totalBookingId;
         this.userName = userName;
-        this.phoneNumber = phoneNumer;
-        this.rooms = rooms;
+        this.phoneNumber = phoneNumber;
+        this.rooms = new ArrayList<>();
         this.discount = discount;
         this.bookingDate = Time.currentDate();
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
-        this.services = services;
+        this.services = new ArrayList<>();
         
         bookingList.put(this.bookingId, this);
+    }
+
+    public void addNewBookingRoom(String roomTypes, int roomQuantites){
+        RoomBooking room = new RoomBooking(roomTypes, roomQuantites);
+        rooms.add(room);
+        
+    }
+
+    public void addNewService (String serviceName, int serviceQuantites){
+        ServiceBooking service = new ServiceBooking(serviceName, serviceQuantites);
+        services.add(service);
+
     }
 
     public static int getTotalBookingId() {
@@ -148,7 +159,7 @@ public class Booking {
 
         return 
             
-            getBookingId() + "," + getUserName() + "," + getPhoneNumber() + ","  + getCheckInDate() + ","  + getCheckOutDate() + "," + roomDetails.toString() + "," + serviceDetails.toString();
+            getBookingId() + "," + getUserName() + "," + getPhoneNumber() + "," + getBookingDate() + "," + getCheckInDate() + ","  + getBookingDate() + "," + getCheckOutDate() + "," + roomDetails.toString() + "," + serviceDetails.toString();
 }
 
 // Booking ID,Customer name,Customer phone number, Room, RoomQty, Room Price Per Unit, Room Price, Service, ServiceQty, Service Price Per Unit, Service price, Booking date, Check-in date, Check-out date,
