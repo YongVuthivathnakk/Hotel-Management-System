@@ -1,9 +1,11 @@
-package UserFolder;
+package Data;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 import com.mysql.cj.exceptions.CJCommunicationsException;
 import com.mysql.cj.jdbc.exceptions.CommunicationsException;
@@ -13,9 +15,9 @@ import java.sql.ResultSet;
 public class MySQLConnection {
 
     private static Connection connection = null;
-    private static final String URL = "jdbc:mysql://localhost:3306/oop";
+    private static final String URL = "jdbc:mysql://localhost:3306/Hotel_Management";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Stro0ngPassw0rd!";
+    private static final String PASSWORD = "Str0ngPassw0rd!";
 
     // Establish the connection
     public static Connection getConnection() {
@@ -67,6 +69,12 @@ public class MySQLConnection {
         return 0;
     }
 
+
+    public static void insertData() {
+
+    }
+
+
     // Close the connection
     public static void closeConnection() {
         if (connection != null) {
@@ -80,5 +88,40 @@ public class MySQLConnection {
             }
         }
     }
+
+    // Insert to 
+    public static void insertRoomID() throws SQLException{
+        // Test the connection
+        getConnection();
+        Statement stm = connection.createStatement();
+        int id = 10;
+        // Executing the SQL Query
+        String sql = "INSERT INTO Room (roomID) VALUES ("+ id + ")";  // Syntax of MySQL data insertion
+        
+        stm.executeUpdate(sql);
+    
+        System.out.println("Insert Complete!!");
+
+        closeConnection();
+    }
+
+    public static void selectRoomID() throws SQLException {
+        getConnection();
+        Statement stm = connection.createStatement();
+        System.out.println("Selecting roomId from Room.....");
+        String sql = "Select * from Room;";
+        ResultSet rs = stm.executeQuery(sql);
+        while (rs.next()) {
+            int id = rs.getInt("roomID");
+            System.out.println(id);
+        }
+        closeConnection();
+    }
+
+
+    public static void main(String[] args) throws SQLException {
+        insertRoomID();
+        selectRoomID();
+    }   
     
 }

@@ -2,7 +2,8 @@ package UserFolder;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import Register_and_Login.Validator;
+import Data.WriteToFile;
+import Validator.Validator;
 
 public class Admin extends User {
     private String type = "Admin";
@@ -104,14 +105,6 @@ public class Admin extends User {
     }
 
 
-
-
-
-
-
-
-
-
     @Override
     public String toCSV() {
         return type + "," + id + "," + salary + "," + super.toCSV() + "," + status;
@@ -121,8 +114,13 @@ public class Admin extends User {
     public void setSalary(double inputSalary) {
         this.salary = inputSalary;
     }
-    
 
 
+    public static void main(String[] args) {
+        Admin newAdmin = new Admin();
+        Scanner input = new Scanner(System.in);
+        newAdmin.register(input);
+        WriteToFile.writer("./Data/Admin.csv", newAdmin.userMap);
+    }
 }
 

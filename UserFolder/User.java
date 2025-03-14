@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import Register_and_Login.Validator;
+
+import Validator.Validator;
 
 public abstract class User {
     protected String firstName;

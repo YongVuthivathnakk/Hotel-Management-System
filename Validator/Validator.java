@@ -1,4 +1,4 @@
-package Register_and_Login;
+package Validator;
 
 import java.util.regex.Pattern;
 
