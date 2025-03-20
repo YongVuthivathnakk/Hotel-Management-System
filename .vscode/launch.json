@@ -1,0 +1,92 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "MySQLConnection",
+            "request": "launch",
+            "mainClass": "MySQLConnection",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
+            "name": "AuthenticationMenu",
+            "request": "launch",
+            "mainClass": "GUI.AuthenticationMenu",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
+            "name": "AuthenticationForm",
+            "request": "launch",
+            "mainClass": "GUI.AuthenticationForm",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
+            "name": "Login",
+            "request": "launch",
+            "mainClass": "GUI.Login",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
+            "name": "LoginWindow",
+            "request": "launch",
+            "mainClass": "GUI.LoginWindow",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
+            "name": "BookingTesting2",
+            "request": "launch",
+            "mainClass": "Booking.BookingTesting2",
+            "projectName": "Hotel-Management-System_c3b717b"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}",
+            "console": "externalTerminal"
+        },
+        {
+            "type": "java",
+            "name": "bookingTesting",
+            "request": "launch",
+            "mainClass": "Booking.bookingTesting",
+            "projectName": "Hotel-Management-System_c3b717b"
+        },
+        {
+            "type": "java",
+            "name": "PaymentTesting",
+            "request": "launch",
+            "mainClass": "Payment.PaymentTesting",
+            "projectName": "Hotel-Management-System_c3b717b"
+        },
+        {
+            "type": "java",
+            "name": "testing",
+            "request": "launch",
+            "mainClass": "Room.testing",
+            "projectName": "Hotel-Management-System_c3b717b"
+        },
+        {
+            "type": "java",
+            "name": "ServiceMain",
+            "request": "launch",
+            "mainClass": "Service.ServiceMain",
+            "projectName": "Hotel-Management-System_c3b717b"
+        },
+        {
+            "type": "java",
+            "name": "sqlTest",
+            "request": "launch",
+            "mainClass": "sqlTest",
+            "projectName": "Hotel-Management-System_c3b717b"
+        }
+    ]
+}

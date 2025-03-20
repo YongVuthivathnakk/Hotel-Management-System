@@ -15,6 +15,7 @@ public class Admin extends User {
     // Scanner for input operations in methods like changePassword
     private Scanner scanner = new Scanner(System.in);
 
+
     public Admin() {
         super();
     }

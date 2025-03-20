@@ -2,21 +2,24 @@ package Payment;
 import java.util.ArrayList;
 import java.util.HashMap;
 import TimeGenerator.Time;
+import Booking.Booking;
 
 public class Payment {
-    private static int totalPaymentId = 1;
-    private int paymentId;
-    private ArrayList<Integer> bookingId = new ArrayList<Integer>(); // to store multiple booking ID in case user has multiple bookings
-    private String paymentMethod;
-    private String paymentDate;
-    private String cardNumber;
-    private double accpetedCash;
-    private String status;
-    private double totalPrice;
-    private double changes;
+    protected static int totalPaymentId = 1;
+    protected int paymentId;
+    protected ArrayList<Integer> bookingId = new ArrayList<Integer>(); // to store multiple booking ID in case user has multiple bookings
+    protected String paymentMethod;
+    protected String paymentDate;
+    protected String cardNumber;
+    protected double accpetedCash;
+    protected String status;
+    protected double totalPrice;
+    protected double changes;
+    protected double subTotal;
+    protected Booking booking;
 
     // List for storing all the past payment
-    private static HashMap<Integer, Payment> paymentList = new HashMap<Integer, Payment>();
+    protected static HashMap<Integer, Payment> paymentList = new HashMap<Integer, Payment>();
 
 
     // constructors
@@ -90,18 +93,10 @@ public class Payment {
     // to string
     @Override
     public String toString() {
-        return   "-----------------------------------------------------------" + "\n" +
-                 "Payment information for paymentID: "+ paymentId + "\n" +
-                 "BookingId: " + bookingId + "\n" +
-                 "Payment Method: " + paymentMethod + "\n" +
-                 "Payment Date: " + paymentDate + "\n" +
-                 "Card Number: " + cardNumber + "\n" +
-                 "Accepted Cash: $" + accpetedCash + "\n" +
-                 "Sub Price: $" +  "\n" +
-                 "Discount: " + "\n" +
-                 "Total Price: $" + totalPrice + "\n" + 
-                 "Changes: " + changes + "\n" +
-                 "Status: " + status + "\n";
+        return  
+                 paymentId + "," + bookingId + "," + paymentMethod + "," + paymentDate + "," + cardNumber + "," +
+                 accpetedCash + "," + subTotal +  "," + booking.getDiscount() + "," + totalPrice + "," + 
+                 changes + "," + status + ",";
     }
 
     // this equal method is used to check to prevent having duplicated multiple ID

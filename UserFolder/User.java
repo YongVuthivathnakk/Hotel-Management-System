@@ -16,7 +16,7 @@ public abstract class User {
     protected String password;
     protected String gender;
     protected int age;
-    public static HashMap<String, User> userMap = new HashMap<>();
+    public static HashMap<String, String> userMap = new HashMap<String, String>();
 
     public User() {
     }

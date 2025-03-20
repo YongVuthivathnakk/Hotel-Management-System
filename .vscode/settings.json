@@ -2,6 +2,10 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "e:\\Uni\\Sophomore\\Term 2\\OOP ( Java )\\mysql-connector-j-9.1.0.jar",
+<<<<<<< HEAD
         "/usr/share/java/mysql-connector-java-9.2.0.jar"
+=======
+        "d:\\School\\Sophormore term 2\\OOP project\\mysql-connector-j-9.1.0.jar"
+>>>>>>> 1a6bb06b80680abfcf5edde239bc76f4ca8ce49e
     ]
 }

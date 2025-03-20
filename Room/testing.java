@@ -18,18 +18,16 @@ public class testing {
         int roomNumber;
         String input;
         int functionNumber;
-        ArrayList<String[]> loadData = new ArrayList<>();
 
         while(true){
             try {
                 System.out.println("here are the function that available");
                 System.out.println("1. Assign new room number and save / write data to file");
                 System.out.println("2. Load the program / read data from file");
-                System.out.println("Enter the function number that you want to do");
+                System.out.print("Enter the function number that you want to do: ");
                 input = scanner.nextLine();
-                functionNumber = Integer.parseInt(input);
                 IntegerOnlyException intOnly = new IntegerOnlyException(input, "^[12]$", "Please enter either number 1 or 2 since there are only two function");
-
+                functionNumber = Integer.parseInt(input);
                 break;
             } catch (IntegerOnlyException e) {
                 System.out.println(e.getMessage());
@@ -65,26 +63,13 @@ public class testing {
 
             Room.assigningnNewRoom(roomType, roomNumber);
             System.out.println(Room.roomList.get(roomNumber));
-
-            try {
-                BufferedWriter roomWriter = new BufferedWriter(new FileWriter("Data/Room_data.txt", true));
-                for (Room room : Room.roomList.values()) {
-                    roomWriter.write(room.toString());
-                    roomWriter.newLine();
-                }
-                roomWriter.close();
-            } catch (IOException e) {
-                System.out.println("An IO Exception occured: " + e.getMessage());
-                e.printStackTrace();
-            }
-
-             WriteToFile.writer("Data/Room_data.txt", Room.getRoomList());
+            WriteToFile.writer("Data/Room_data.txt", Room.getRoomList());
 
         }
         else{
-            ReadFromFile.reader("Data/Room_data.txt", loadData);
-            HashMap<Integer, Room> roomlist = new HashMap<>();
-            for(String[] words : loadData){
+            ArrayList<String[]> loadedRoomData = new ArrayList<>();
+            ReadFromFile.reader("Data/Room_data.txt", loadedRoomData);
+            for(String[] words : loadedRoomData){
                 // System.out.println(Arrays.toString(words));
                 if (words[0].toLowerCase().equals("standard room".toLowerCase())) {
                     Room room = new StandardRoom();
@@ -92,45 +77,44 @@ public class testing {
                     room.setRoomNumber(Integer.parseInt(words[1]));
                     room.setCapacity(Integer.parseInt(words[2]));
                     room.setPricePerNight(Double.parseDouble(words[3]));
-                    roomlist.put(Integer.parseInt(words[1]), room);
+                    Room.roomList.put(Integer.parseInt(words[1]), room);
+                }
+                else if (words[0].toLowerCase().equals("deluxe room".toLowerCase())) {
+                    Room room = new DeluxeRoom();
+                    room.setRoomType(words[0]);
+                    room.setRoomNumber(Integer.parseInt(words[1]));
+                    room.setCapacity(Integer.parseInt(words[2]));
+                    room.setPricePerNight(Double.parseDouble(words[3]));
+                    Room.roomList.put(Integer.parseInt(words[1]), room);
+                }
+                else if (words[0].toLowerCase().equals("family room".toLowerCase())) {
+                    Room room = new FamilyRoom();
+                    room.setRoomType(words[0]);
+                    room.setRoomNumber(Integer.parseInt(words[1]));
+                    room.setCapacity(Integer.parseInt(words[2]));
+                    room.setPricePerNight(Double.parseDouble(words[3]));
+                    Room.roomList.put(Integer.parseInt(words[1]), room);
+                }
+                else if (words[0].toLowerCase().equals("suite".toLowerCase())) {
+                    Room room = new Suite();
+                    room.setRoomType(words[0]);
+                    room.setRoomNumber(Integer.parseInt(words[1]));
+                    room.setCapacity(Integer.parseInt(words[2]));
+                    room.setPricePerNight(Double.parseDouble(words[3]));
+                    Room.roomList.put(Integer.parseInt(words[1]), room);
                 }
                 else{
                     continue;
                 }
-    
             }
-    
-            for(Room room : roomlist.values()){
-                System.out.println(room);
-            }
+            System.out.println("The data are loaded into the program successfully");
+            System.out.println("The information for room 1111 is : " + Room.roomList.get(1111)); // check if the data is loaded and create the object successfully
+            
         }
-
-
         
 
 
         scanner.close();
-        
-        
-        
-       
-        
-        // try {
-        //     BufferedReader roomReader = new BufferedReader(new FileReader("Data/Room_data.txt"));
-        //     String line;
-        //     String[] word;
-        //     ArrayList<String[]> words = new ArrayList<>();
-        //     while ((line = roomReader.readLine()) != null) {
-        //         word = line.split(",");
-        //         words.add(word);
-        //     }
-        //     for (String[] string : words) {
-        //         System.out.println(string);
-        //     }
-        //     roomReader.close();
-        // } catch (Exception e) {
-        //     e.printStackTrace();
-        // }
         
     }
 
