@@ -41,27 +41,27 @@ public class Test {
                     input.nextLine(); // clear buffer
                     continue;
                 }
-                switch (choice) {
-                    case 1:
-                        User newAdmin = new Admin();
-                        newAdmin.register(input);
-                        writeToFile(newAdmin);
-                        break;
-                    case 2:
-                        User newEmployee = new Employee();
-                        newEmployee.register(input);
-                        writeToFile(newEmployee);
-                        break;
+                // switch (choice) {
+                //     case 1:
+                //         User newAdmin = new Admin();
+                //         newAdmin.register(input);
+                //         writeToFile(newAdmin);
+                //         break;
+                //     case 2:
+                //         User newEmployee = new Employee();
+                //         newEmployee.register(input);
+                //         writeToFile(newEmployee);
+                //         break;
                     
-                    case 4:
-                        for(User user : User.listAllUsers().values()) {
-                            System.out.println(user);
-                        }
-                        break;
-                    default:
-                        System.out.println("Invalid Input.");
-                        break;
-                }
+                //     case 4:
+                //         for(User user : User.listAllUsers().values()) {
+                //             System.out.println(user);
+                //         }
+                //         break;
+                //     default:
+                //         System.out.println("Invalid Input.");
+                //         break;
+                // }
             } catch (InputMismatchException e) {
                 throw new InputMismatchException("Please enter integer number.");
             }

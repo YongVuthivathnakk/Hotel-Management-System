@@ -6,6 +6,62 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Register",
+            "request": "launch",
+            "mainClass": "GUI.Register",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
+            "name": "GuestPage",
+            "request": "launch",
+            "mainClass": "GUI.GuestPage",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
+            "name": "GuestFrame",
+            "request": "launch",
+            "mainClass": "GUI.GuestFrame",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
+            "name": "DBConnection",
+            "request": "launch",
+            "mainClass": "Data.DBConnection",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
+            "name": "Testing",
+            "request": "launch",
+            "mainClass": "Data.Testing",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
+            "name": "MySQLConnection",
+            "request": "launch",
+            "mainClass": "Data.MySQLConnection",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
+            "name": "Test",
+            "request": "launch",
+            "mainClass": "UserFolder.Test",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
+            "name": "UsersApp",
+            "request": "launch",
+            "mainClass": "CLI.UsersApp",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
             "name": "MySQLConnection",
             "request": "launch",
             "mainClass": "MySQLConnection",

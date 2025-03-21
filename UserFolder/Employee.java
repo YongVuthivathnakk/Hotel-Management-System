@@ -6,13 +6,12 @@ import java.util.Scanner;
 import TimeGenerator.Time;
 
 public class Employee extends User{
-    public String type = "Employee";
     public int id;
     private static int count = 0;
     private String role;
     private double salary;
     private String hireDate = Time.currentDate();
-    private String password;
+    // private String password;
 
     public Employee() {
         super();
@@ -84,84 +83,84 @@ public class Employee extends User{
                 super.toString() + "\n";
     }
 
-    // Method
-    @Override
-    public void register(Scanner input) {
-        System.out.println("== Register as Employee ==");
-        super.register(input);
+    // // Method
+    // @Override
+    // public void register(Scanner input) {
+    //     System.out.println("== Register as Employee ==");
+    //     super.register(input);
 
-        // Enter Role
-        int inputRole;
-        while (true) {
-            try {
-                System.out.println("\n=== Choose your Role ===");
-                System.out.println("1. Manager");
-                System.out.println("2. Receptionist");
-                System.out.println("3. Security");
-                System.out.println("4. Waiter");
-                System.out.println("5. Chef");
-                System.out.println("6. Cleaner");
-                System.out.print("Enter your Role: ");
-                inputRole = input.nextInt();
-                if (inputRole == 1) {
-                    this.role = "Manager";
-                    input.nextLine();
-                    break;
-                } else if (inputRole == 2) {
-                    this.role = "Receptionist";
-                    input.nextLine();
-                    break;
-                } else if (inputRole == 3) {
-                    this.role = "Security";
-                    input.nextLine();
-                    break;
-                } else if (inputRole == 4) {
-                    this.role = "Waiter";
-                    input.nextLine();
-                    break;
-                } else if (inputRole == 5) {
-                    this.role = "Chef";
-                    input.nextLine();
-                    break;
-                } else if (inputRole == 6) {
-                    this.role = "Cleaner";
-                    input.nextLine();
-                    break;
-                } else {
-                    System.out.println("Please enter the correct number !!!");
-                    input.nextLine();
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Please enter an integer !!!");
-                input.nextLine();
-            }
-        }
+    //     // Enter Role
+    //     int inputRole;
+    //     while (true) {
+    //         try {
+    //             System.out.println("\n=== Choose your Role ===");
+    //             System.out.println("1. Manager");
+    //             System.out.println("2. Receptionist");
+    //             System.out.println("3. Security");
+    //             System.out.println("4. Waiter");
+    //             System.out.println("5. Chef");
+    //             System.out.println("6. Cleaner");
+    //             System.out.print("Enter your Role: ");
+    //             inputRole = input.nextInt();
+    //             if (inputRole == 1) {
+    //                 this.role = "Manager";
+    //                 input.nextLine();
+    //                 break;
+    //             } else if (inputRole == 2) {
+    //                 this.role = "Receptionist";
+    //                 input.nextLine();
+    //                 break;
+    //             } else if (inputRole == 3) {
+    //                 this.role = "Security";
+    //                 input.nextLine();
+    //                 break;
+    //             } else if (inputRole == 4) {
+    //                 this.role = "Waiter";
+    //                 input.nextLine();
+    //                 break;
+    //             } else if (inputRole == 5) {
+    //                 this.role = "Chef";
+    //                 input.nextLine();
+    //                 break;
+    //             } else if (inputRole == 6) {
+    //                 this.role = "Cleaner";
+    //                 input.nextLine();
+    //                 break;
+    //             } else {
+    //                 System.out.println("Please enter the correct number !!!");
+    //                 input.nextLine();
+    //             }
+    //         } catch (InputMismatchException e) {
+    //             System.out.println("Please enter an integer !!!");
+    //             input.nextLine();
+    //         }
+    //     }
 
-        double salary;
-        while (true) {
-            try {
-                System.out.print("Enter your salary (must be equal to or more than 100): ");
-                salary = input.nextDouble();
-                if (salary >= 100) {
-                    input.nextLine();
-                    this.salary = salary;
-                    break;
-                } else {
-                    System.out.println("Salary must be equal to or more than 100 !!!");
-                    input.nextLine();
-                }
+    //     double salary;
+    //     while (true) {
+    //         try {
+    //             System.out.print("Enter your salary (must be equal to or more than 100): ");
+    //             salary = input.nextDouble();
+    //             if (salary >= 100) {
+    //                 input.nextLine();
+    //                 this.salary = salary;
+    //                 break;
+    //             } else {
+    //                 System.out.println("Salary must be equal to or more than 100 !!!");
+    //                 input.nextLine();
+    //             }
                 
-            } catch (InputMismatchException e) {
-                System.out.println("Please enter an integer or double !!!");
-                input.nextLine();
-            }  
-        }
+    //         } catch (InputMismatchException e) {
+    //             System.out.println("Please enter an integer or double !!!");
+    //             input.nextLine();
+    //         }  
+    //     }
         
-    }
+    // }
 
     @Override
     public String toCSV() {
-        return type + "," + id + "," + role + "," + salary + "," + hireDate + "," + super.toCSV();
+        return jobTitle + "," + id + "," + role + "," + salary + "," + hireDate + "," + super.toCSV();
     }
 
 }

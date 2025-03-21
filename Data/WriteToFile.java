@@ -14,7 +14,7 @@ import java.sql.Statement;
 
 public class WriteToFile {
     public static void main(String[] args) {
-        getConnection();
+        connect();
         closeConnection();
     }
 

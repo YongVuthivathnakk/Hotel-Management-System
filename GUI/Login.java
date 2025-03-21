@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 
 public class Login extends AuthenticationForm {
     JLabel header = new JLabel("Login");
+    JLabel statusLabel = new JLabel("");
 
     public Login(HashMap<String,String> userInfo) {
         super(userInfo); // Call the constructor of the superclass
@@ -16,12 +17,33 @@ public class Login extends AuthenticationForm {
         header.setFont(new Font("Arial", Font.PLAIN, 35));
         header.setBounds(350, 200, 300,55);
         frame.add(header);
+
+        statusLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        statusLabel.setBounds(150, 300, 300, 55);
+        panel.add(statusLabel);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        super.actionPerformed(e);
+        // super.actionPerformed(e);
+        if(e.getSource() == loginButton) {
+            String username = usernameInput.getText();
+            String password = String.valueOf(passwordInput.getPassword());
+            if(loginInfo.containsKey(username)) {
+                if(loginInfo.get(username).equals(password)) {
+                    GuestPage guestFrame = new GuestPage(username);
+                    frame.dispose();
+                    statusLabel.setForeground(Color.GREEN);
+                    statusLabel.setText("Login successful!");
+                } else {
+                    statusLabel.setForeground(Color.RED);
+                    statusLabel.setText("Incorrect password.");
+                }
+            } else {
+                statusLabel.setForeground(Color.RED);
+                statusLabel.setText("Username not found.");
+            }
+        }
     }
 
-    
 }

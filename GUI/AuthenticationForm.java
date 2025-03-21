@@ -32,7 +32,7 @@ public class AuthenticationForm implements ActionListener{
         frame.getContentPane().setBackground(Color.DARK_GRAY);
 
         panel.setLayout(null);
-        panel.setBounds(200,250,400,300);
+        panel.setBounds(200,250,400,500);
 
         usernameusernameLabel.setForeground(Color.white);
         usernameusernameLabel.setFont(new Font("Serif", Font.PLAIN, 24));
@@ -56,18 +56,7 @@ public class AuthenticationForm implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == loginButton) {
-            String username = usernameInput.getText();
-            String password = String.valueOf(passwordInput.getPassword());
-            if(loginInfo.containsKey(username)) {
-                if(loginInfo.get(username).equals(password)) {
-                    panel.setBackground(Color.GREEN);
-                } else {
-                    panel.setBackground(Color.RED);
-                }
-            } else {
-                panel.setBackground(Color.RED);
-            }
-        }
+
     }
+
 }

@@ -1,9 +1,15 @@
 package GUI;
 import java.awt.Color;
+import java.sql.SQLException;
+
 import javax.swing.JButton;
 
-import UserFolder.UserInfo;
+import com.mysql.cj.protocol.a.MysqlBinaryValueDecoder;
 
+import UserFolder.Guest;
+import UserFolder.Staff;
+import UserFolder.User;
+import Data.MySQLConnection;
 
 public class AuthenticationMenu {
     Frame frame = new Frame();
@@ -11,33 +17,46 @@ public class AuthenticationMenu {
         frame.getContentPane().setBackground(Color.darkGray);
         JButton registerButton = createButton("User Register", 200, 300);
         JButton userLoginButton = createButton("User Login", 400, 300);
-        JButton stuffLoginButton = createButton("Stuff Login", 300, 350);
+        JButton staffLoginButton = createButton("Staff Login", 300, 350);
         registerButton.addActionListener((e) ->{
             System.out.println("Register button is clicked");
             if (e.getSource() == registerButton) {
-                Register loginWindow = new Register();
+                Register registerPage = new Register();
                 frame.dispose();
             } 
         });
         userLoginButton.addActionListener((e) -> {
             System.out.println("Login button is clicked");
             if (e.getSource() == userLoginButton) {
-                UserInfo users = new UserInfo();
-                AuthenticationForm loginWindow = new Login(users.getUserInfo());
+                Guest guestLoginInfo = new Guest();
+                try {
+                    guestLoginInfo.setGuestLoginInfo();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+                AuthenticationForm loginWindow = new Login(guestLoginInfo.getGuestLoginInfo());
                 frame.dispose();
             } 
         });
-        stuffLoginButton.addActionListener((e) -> {
+        staffLoginButton.addActionListener((e) -> {
              System.out.println("Stuff login button is clicked");
-             if (e.getSource() == stuffLoginButton) {
-                 UserInfo users = new UserInfo();
-                 AuthenticationForm loginWindow = new Login(users.getUserInfo());
-                 frame.dispose();
+             if (e.getSource() == staffLoginButton) {
+
+                Staff staff = new Staff();
+                try {
+                    staff.setStaffLoginInfo();
+                } catch (SQLException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+                
+                AuthenticationForm loginWindow = new Login(staff.getStaffLoginInfo());
+                frame.dispose();
             } 
         });
         registerButton.setBounds(200, 300, 150, 40);
         userLoginButton.setBounds(400, 300, 150, 40);
-        stuffLoginButton.setBounds(300, 350, 150,40);
+        staffLoginButton.setBounds(300, 350, 150,40);
 
 
     }
