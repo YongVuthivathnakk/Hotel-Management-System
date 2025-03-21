@@ -2,21 +2,25 @@ package Booking;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import Room.Room;
 import TimeGenerator.Time;
+import Rooms.Room;
+import Rooms.RoomManager;
+
 
 public class Booking {
     protected static int totalBookingId = 0;
     protected int bookingId;
     protected String userName;
     protected String phoneNumber; 
-    protected ArrayList<RoomBooking> rooms;
+    protected ArrayList<RoomBooking> roomRequirement = new ArrayList<>();
+    protected HashMap<Integer, Room> rooms;
     protected int discount;
     protected String bookingDate;
     protected String checkInDate;
     protected String checkOutDate;
-    protected ArrayList<ServiceBooking> services;
+    protected int roomNumber;
+    protected double subTotal;
+    protected double netTotal;
 
     protected static HashMap <Integer, Booking> bookingList = new HashMap<Integer, Booking>();
 
@@ -24,28 +28,153 @@ public class Booking {
         this.bookingId = ++totalBookingId;
         this.userName = userName;
         this.phoneNumber = phoneNumber;
-        this.rooms = new ArrayList<>();
+        this.roomRequirement = new ArrayList<>();
+        this.rooms = new HashMap<>();
         this.discount = discount;
         this.bookingDate = Time.currentDate();
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
-        this.services = new ArrayList<>();
-        
+        this.subTotal = this.subTotal();
+        this.netTotal = this.netTotal(subTotal);
+
         bookingList.put(this.bookingId, this);
     }
 
-    public void addNewBookingRoom(String roomTypes, int roomQuantites){
-        RoomBooking room = new RoomBooking(roomTypes, roomQuantites);
-        rooms.add(room);
+    public void addNewBookingRoomRequiement(String roomType, int roomQuantites){
+        RoomBooking bookingRoom = new RoomBooking(roomType, roomQuantites);
+        roomRequirement.add(bookingRoom);
+        System.out.println("Current roomRequirement contents:");
+        for (RoomBooking room : roomRequirement) {
+            System.out.println(room.getRoomType() + " - " + room.getRoomQuantites());
+        }
+    }
+
+    public void assignedRoomForGuest(Booking booking){ // this method is not working
+        RoomManager.loadRoomData();
+        for(RoomBooking roomBooking : booking.roomRequirement){
+            int assignedRoomCount = 0;
+            for(Room room : Room.getRoomList().values()){
+                if (roomBooking.roomType.equals(room.getRoomType()) && !Room.getBookedRooms().containsKey(room.getRoomNumber())) {
+                    booking.roomNumber = room.getRoomNumber();
+                    Room.getBookedRooms().put(room.getRoomNumber(), room);
+                    assignedRoomCount++;
+                    if (assignedRoomCount == roomBooking.getRoomQuantites()) {
+                        break;
+                    }
+                }
+
+                if(assignedRoomCount <= roomBooking.getRoomQuantites()){
+                    System.out.println("Only " + assignedRoomCount + " room is successfully assigned");
+                }
+            }
+        }
+        for(Room room : Room.getBookedRooms().values()){
+            System.out.println(room);
+        }
+    }
+
+    public double subTotal(){
+        double subPrice = 0.0;
+        for(RoomBooking roomBooking : roomRequirement){
+            subPrice += RoomManager.roomPrice(roomBooking.getRoomType()) * roomBooking.getRoomQuantites();
+        }
+        return subPrice;
+    }
+
+    public double netTotal(double subPrice){
+        double netPrice = subPrice - (subPrice * discount / 100);
+        return netPrice;
+    }
+    
+
+    @Override
+    public String toString() {
+        StringBuilder roomDetails = new StringBuilder();
+        StringBuilder roomNumberDetails = new StringBuilder();
         
+        for (RoomBooking room : roomRequirement) {
+                roomDetails.append(room.getRoomType())  
+                .append(", ")
+                .append(room.getRoomQuantites()) 
+                .append(", ")
+                .append(RoomManager.roomPrice(room.getRoomType()))  
+                .append("\n");
+            
+        }
+
+        for(Room room : rooms.values()){
+            roomNumberDetails.append(room.getRoomType())
+            .append(",")
+            .append(room.getRoomNumber())
+            .append(",");
+        }
+        
+        return bookingId + "," + userName + "," + phoneNumber + "," + bookingDate + "," + 
+        checkInDate + "," + checkOutDate + "," +  discount + "," + roomDetails.toString() + "," + 
+        roomNumberDetails.toString() + "," + subTotal() + "," + netTotal(subTotal());
     }
+    
+    public String printingReceipe(Booking booking){
+        StringBuilder roomDetails = new StringBuilder();
+        StringBuilder roomNumberDetails = new StringBuilder();
+        
+        for (RoomBooking room : roomRequirement) {
+                roomDetails.append(room.getRoomType())  
+                .append(", ")
+                .append(room.getRoomQuantites()) 
+                .append(", ")
+                .append(RoomManager.roomPrice(room.getRoomType()))  
+                .append("\n");
+            
+        }
 
-    public void addNewService (String serviceName, int serviceQuantites){
-        ServiceBooking service = new ServiceBooking(serviceName, serviceQuantites);
-        services.add(service);
-
+        for(Room room : rooms.values()){
+            roomNumberDetails.append(room.getRoomType())
+            .append(",")
+            .append(room.getRoomNumber())
+            .append("\n");
+        }
+        
+        return "------------------ Booking Information --------------------\n" +
+        "Booking ID: " + bookingId + " | " +
+        "Username: " + userName + "\n" +
+        "Phone Number: " + phoneNumber + " | " +
+        "Booking Date: " + bookingDate + "\n" +
+        "Check-in Date: " + checkInDate + " | " +
+        "Check-out Date: " + checkOutDate + "\n" +
+        "-------------------------------------------------------------\n" +
+        "Room info: \n" + roomDetails.toString() +
+        "Room Number: \n" + roomNumberDetails.toString() + "\n" + 
+        "-------------------------------------------------------------\n" + 
+        "Sub total: " + subTotal() + "\n" + 
+        "Discount: " + discount + "\n" + 
+        "Net total: " + netTotal(subTotal()) + "\n";
     }
-
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+        return true;
+        if (obj == null)
+        return false;
+        if (getClass() != obj.getClass())
+        return false;
+        Booking other = (Booking) obj;
+        if (checkInDate == null) {
+            if (other.checkInDate != null)
+            return false;
+        } else if (!checkInDate.equals(other.checkInDate))
+        return false;
+        if (checkOutDate == null) {
+            if (other.checkOutDate != null)
+            return false;
+        } else if (!checkOutDate.equals(other.checkOutDate))
+        return false;
+        if (roomNumber != other.roomNumber)
+        return false;
+        return true;
+    }
+    
     public static int getTotalBookingId() {
         return totalBookingId;
     }
@@ -60,14 +189,6 @@ public class Booking {
 
     public String getPhoneNumber() {
         return phoneNumber;
-    }
-
-    public ArrayList<RoomBooking> getRooms() {
-        return rooms;
-    }
-
-    public ArrayList<ServiceBooking> getServices() {
-        return services;
     }
 
     public int getDiscount() {
@@ -89,17 +210,7 @@ public class Booking {
     public static HashMap<Integer, Booking> getBookingList() {
         return bookingList;
     }
-
-
-
     
-   public static void setTotalBookingId(int totalBookingId) {
-        Booking.totalBookingId = totalBookingId;
-    }
-
-    public void setBookingId(int bookingId) {
-        this.bookingId = bookingId;
-    }
 
     public void setUserName(String userName) {
         this.userName = userName;
@@ -107,10 +218,6 @@ public class Booking {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public void setRooms(ArrayList<RoomBooking> rooms) {
-        this.rooms = rooms;
     }
 
     public void setDiscount(int discount) {
@@ -129,59 +236,26 @@ public class Booking {
         this.checkOutDate = checkOutDate;
     }
 
-    public void setServices(ArrayList<ServiceBooking> services) {
-        this.services = services;
-    }
 
     public static void setBookingList(HashMap<Integer, Booking> bookingList) {
         Booking.bookingList = bookingList;
     }
 
-@Override
-    public String toString() {
-        StringBuilder roomDetails = new StringBuilder();
-        StringBuilder serviceDetails = new StringBuilder();
-        
-        for (RoomBooking room : rooms) {
-            roomDetails.append(room.getRoomType())  
-                    .append(",")
-                    .append(room.getroomQuantites()) 
-                    .append(",");  
-        }
 
-        for (ServiceBooking service : services) {
-            roomDetails.append(service.getService())  
-                    .append(",")
-                    .append(service.getServiceQuantities())
-                    .append(","); 
-        }
+    public ArrayList<RoomBooking> getRoomRequirement() {
+        return roomRequirement;
+    }
 
+    public void setRoomRequirement(ArrayList<RoomBooking> roomRequirement) {
+        this.roomRequirement = roomRequirement;
+    }
 
-        return 
-            
-            getBookingId() + "," + getUserName() + "," + getPhoneNumber() + "," + getBookingDate() + "," + getCheckInDate() + ","  + getBookingDate() + "," + getCheckOutDate() + "," + roomDetails.toString() + "," + serviceDetails.toString();
-}
+    public HashMap<Integer, Room> getRooms() {
+        return rooms;
+    }
 
-// Booking ID,Customer name,Customer phone number, Room, RoomQty, Room Price Per Unit, Room Price, Service, ServiceQty, Service Price Per Unit, Service price, Booking date, Check-in date, Check-out date,
-        
-    
-     
-    
-    // public double subRoomTotalPrice(){
-
-    //     return ;
-    // }
-    
-    
-    // double subServiceTotalPrice(){
-        
-    // }
-    
-    // double subTotal(){
-        
-    // }
-
-    // double netTotal(){}
-    
+    public void setRooms(HashMap<Integer, Room> rooms) {
+        this.rooms = rooms;
+    }
     
 }

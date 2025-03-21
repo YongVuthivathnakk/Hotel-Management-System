@@ -148,7 +148,6 @@ public class MySQLConnection {
             String username = rs.getString("Username");
             String password = rs.getString("Password");
             loginInfo.put(username, password);
-            System.out.println("Retrieved - Username: " + username + ", Password: " + password);
         }
         closeConnection();
     }
@@ -168,7 +167,6 @@ public class MySQLConnection {
             String username = rs.getString("Staff_Username");
             String password = rs.getString("Password");
             staffLoginInfo.put(username, password);
-            System.out.println("Retrieved - Username: " + username + ", Password: " + password);
         }
         closeConnection();
     }

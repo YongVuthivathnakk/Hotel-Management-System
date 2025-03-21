@@ -1,4 +1,4 @@
-package UserFolder;
+package TempFolder;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;

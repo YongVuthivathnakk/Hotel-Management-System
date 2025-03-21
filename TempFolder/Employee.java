@@ -1,9 +1,10 @@
-package UserFolder;
+package TempFolder;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import TimeGenerator.Time;
+import UserFolder.User;
 
 public class Employee extends User{
     public int id;

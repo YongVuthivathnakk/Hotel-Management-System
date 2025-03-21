@@ -15,8 +15,9 @@ public class AuthenticationMenu {
     Frame frame = new Frame();
     public AuthenticationMenu(){
         frame.getContentPane().setBackground(Color.darkGray);
-        JButton registerButton = createButton("User Register", 200, 300);
-        JButton userLoginButton = createButton("User Login", 400, 300);
+        frame.setTitle("Hotel Management System");
+        JButton registerButton = createButton("Guest Register", 200, 300);
+        JButton userLoginButton = createButton("Guest Login", 400, 300);
         JButton staffLoginButton = createButton("Staff Login", 300, 350);
         registerButton.addActionListener((e) ->{
             System.out.println("Register button is clicked");
@@ -34,7 +35,7 @@ public class AuthenticationMenu {
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
-                AuthenticationForm loginWindow = new Login(guestLoginInfo.getGuestLoginInfo());
+                GuestLogin loginWindow = new GuestLogin(guestLoginInfo.getGuestLoginInfo());
                 frame.dispose();
             } 
         });
@@ -50,7 +51,7 @@ public class AuthenticationMenu {
                     e1.printStackTrace();
                 }
                 
-                AuthenticationForm loginWindow = new Login(staff.getStaffLoginInfo());
+                StaffLogin loginWindow = new StaffLogin(staff.getStaffLoginInfo());
                 frame.dispose();
             } 
         });

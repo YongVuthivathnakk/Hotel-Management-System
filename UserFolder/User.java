@@ -7,7 +7,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Data.MySQLConnection;
-import Validator.Validator;
+import TempFolder.Validator.Validator;
 
 public abstract class User {
     protected int tempId = 0;
@@ -43,15 +43,12 @@ public abstract class User {
     }
 
 
-    // login
-
 
 
     // register
     public void register(String firstName, String lastName, String username, String gender, int age, String email, String phoneNumber, String password) throws SQLException{
         MySQLConnection newConnection = new MySQLConnection();
         newConnection.insertGuestInfo(firstName, lastName, username, password, email, phoneNumber, age, gender);
-
     }
 
     // Getters

@@ -2,7 +2,7 @@ package CLI;
 
 import java.util.Scanner;
 
-import UserFolder.Admin;
+import TempFolder.Admin;
 
 public class UsersApp {
     public static void main(String[] args) {

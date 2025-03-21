@@ -1,9 +1,10 @@
-package UserFolder;
+package TempFolder;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Data.WriteToFile;
-import Validator.Validator;
+import TempFolder.Validator.Validator;
+import UserFolder.User;
 
 public class Admin extends User {
     private String type = "Admin";
