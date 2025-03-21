@@ -1,6 +1,6 @@
-package Room;
+package Rooms;
 public class Suite extends Room {
-    Suite(){
+    public Suite(){
         this.description = "";
         this.capacity = 2;
         this.roomType = "Suite";

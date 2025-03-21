@@ -1,10 +1,15 @@
 package Booking;
 
+import java.util.Map;
+
+
 public class RoomBooking {
     protected String roomType;
     protected int roomQuantites;
-
-    RoomBooking(String roomType, int roomQuantites){
+    protected int roomNumber;
+    
+    
+    public RoomBooking(String roomType, int roomQuantites){
         this.roomType = roomType;
         this.roomQuantites = roomQuantites;
     }
@@ -13,9 +18,28 @@ public class RoomBooking {
         return roomType;
     }
 
-    public int getroomQuantites() {
+    public int getRoomQuantites() {
         return roomQuantites;
     }
+    
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
+    public void setRoomQuantites(int roomQuantites) {
+        this.roomQuantites = roomQuantites;
+    }
+
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+
+
     
     @Override
     public boolean equals(Object obj) {
@@ -26,17 +50,10 @@ public class RoomBooking {
         if (getClass() != obj.getClass())
             return false;
         RoomBooking other = (RoomBooking) obj;
-        if (roomType == null) {
-            if (other.roomType != null)
-                return false;
-        } else if (!roomType.equals(other.roomType))
-            return false;
-        if (roomQuantites != other.roomQuantites)
+        if (roomNumber != other.roomNumber)
             return false;
         return true;
-    }
-
-    
+    }    
 }
 
 

@@ -1,9 +1,9 @@
-package Room;
+package Rooms;
 public class DeluxeRoom extends Room {
-    DeluxeRoom(){
+    public DeluxeRoom(){
         this.description = "";
         this.capacity = 2;
-        this.roomType = "Standard Room";
+        this.roomType = "Deluxe Room";
         this.pricePerNight = 120;
     }
     

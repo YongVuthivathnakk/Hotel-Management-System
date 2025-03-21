@@ -9,8 +9,7 @@ import java.util.HashMap;
 
 public class WriteToFile {
 
-    // In Java, generics allow you to create classes, interfaces, and methods that can operate on different data types
-    // while ensuring type safety at compile time.
+    
     public static <K,V> void writer (String fileName, HashMap<K, V> data){
         try {
             BufferedWriter roomWriter = new BufferedWriter(new FileWriter(fileName, true));

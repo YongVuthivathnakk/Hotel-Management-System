@@ -1,3 +1,5 @@
+package SQLConnection;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -23,11 +25,11 @@ public class MySQLConnection {
                 connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                 System.out.println("Connected to MySQL successfully!");
             }catch (CJCommunicationsException e) {
-                System.out.println("please check ur db server");
+                System.out.println("please check your db server");
                
             }
             catch (CommunicationsException e) {
-                System.out.println("please check ur db server");
+                System.out.println("please check your db server");
                 
             }
             catch (SQLSyntaxErrorException e) {
@@ -79,6 +81,7 @@ public class MySQLConnection {
             }
         }
     }
+
     
 }
 

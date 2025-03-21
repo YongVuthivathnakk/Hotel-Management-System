@@ -6,6 +6,62 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Stuff",
+            "request": "launch",
+            "mainClass": "GUI.Stuff",
+            "projectName": "Hotel-Management-System_88f1c992"
+        },
+        {
+            "type": "java",
+            "name": "sqlTest",
+            "request": "launch",
+            "mainClass": "sqlTest",
+            "projectName": "Hotel-Management-System_88f1c992"
+        },
+        {
+            "type": "java",
+            "name": "LoginWindow",
+            "request": "launch",
+            "mainClass": "GUI.LoginWindow",
+            "projectName": "Hotel-Management-System_88f1c992"
+        },
+        {
+            "type": "java",
+            "name": "TestingBookingManager",
+            "request": "launch",
+            "mainClass": "Booking.TestingBookingManager",
+            "projectName": "Hotel-Management-System_88f1c992"
+        },
+        {
+            "type": "java",
+            "name": "testing",
+            "request": "launch",
+            "mainClass": "Rooms.testing",
+            "projectName": "Hotel-Management-System_88f1c992"
+        },
+        {
+            "type": "java",
+            "name": "TestingGettingPrice",
+            "request": "launch",
+            "mainClass": "Booking.TestingGettingPrice",
+            "projectName": "Hotel-Management-System_88f1c992"
+        },
+        {
+            "type": "java",
+            "name": "testing",
+            "request": "launch",
+            "mainClass": "Room.testing",
+            "projectName": "Hotel-Management-System_88f1c992"
+        },
+        {
+            "type": "java",
+            "name": "BookingTesting2",
+            "request": "launch",
+            "mainClass": "Booking.BookingTesting2",
+            "projectName": "Hotel-Management-System_88f1c992"
+        },
+        {
+            "type": "java",
             "name": "BookingTesting2",
             "request": "launch",
             "mainClass": "Booking.BookingTesting2",
