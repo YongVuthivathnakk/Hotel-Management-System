@@ -168,7 +168,9 @@ public abstract class Room { // abstract here is used for preventing from create
         }
     }
 
+    public static void updateRoomData(){
 
+    }
 
     
     
