@@ -6,5 +6,5 @@ public class DeluxeRoom extends Room {
         this.roomType = "Deluxe Room";
         this.pricePerNight = 120;
     }
-    
+ 
 }

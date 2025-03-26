@@ -224,10 +224,6 @@ public class Booking {
         this.discount = discount;
     }
 
-    public void setBookingDate(String bookingDate) {
-        this.bookingDate = bookingDate;
-    }
-
     public void setCheckInDate(String checkInDate) {
         this.checkInDate = checkInDate;
     }

@@ -28,7 +28,7 @@ public class AssignNewRoom {
         roomNumberLabel.setBounds(100,160,500,40);
         roomNumberVariable = new TextInput(100, 200);
 
-        Button addNewRoomButton = new Button("Add New Room", 220, 300);
+        Button addNewRoomButton = new Button("Add New Room", 240, 300);
         frame.add(roomTypeVariable);
         frame.add(roomNumberVariable);
         frame.add(roomTypeLabel);
