@@ -13,7 +13,7 @@ public class StaffLogin extends Login{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // super.actionPerformed(e);
+        super.actionPerformed(e);
         if(e.getSource() == loginButton) {
             String username = usernameInput.getText();
             String password = String.valueOf(passwordInput.getPassword());

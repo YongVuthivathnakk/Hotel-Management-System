@@ -13,16 +13,16 @@ public class GuestLogin extends Login {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // super.actionPerformed(e);
+        super.actionPerformed(e);
         if(e.getSource() == loginButton) {
             String username = usernameInput.getText();
             String password = String.valueOf(passwordInput.getPassword());
             if(loginInfo.containsKey(username)) {
                 if(loginInfo.get(username).equals(password)) {
-                    GuestPage guestFrame = new GuestPage(username);
-                    frame.dispose();
                     statusLabel.setForeground(Color.GREEN);
                     statusLabel.setText("Login successful!");
+                    GuestPage guestFrame = new GuestPage(username);
+                    frame.dispose();
                 } else {
                     statusLabel.setForeground(Color.RED);
                     statusLabel.setText("Incorrect password.");
@@ -33,5 +33,6 @@ public class GuestLogin extends Login {
             }
         }
     }
+
     
 }

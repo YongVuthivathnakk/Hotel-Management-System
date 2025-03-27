@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GuestLogin",
+            "request": "launch",
+            "mainClass": "GUI.GuestLogin",
+            "projectName": "Hotel-Management-System_ac89f80c"
+        },
+        {
+            "type": "java",
             "name": "Stuff",
             "request": "launch",
             "mainClass": "GUI.Stuff",

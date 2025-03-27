@@ -8,6 +8,8 @@ import java.util.HashMap;
 
 import javax.swing.JLabel;
 
+import com.mysql.cj.log.Log;
+
 public class Login extends AuthenticationForm implements ActionListener {
     JLabel header = new JLabel("Login");
     JLabel statusLabel = new JLabel("");
@@ -26,25 +28,7 @@ public class Login extends AuthenticationForm implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // super.actionPerformed(e);
-        if(e.getSource() == loginButton) {
-            String username = usernameInput.getText();
-            String password = String.valueOf(passwordInput.getPassword());
-            if(loginInfo.containsKey(username)) {
-                if(loginInfo.get(username).equals(password)) {
-                    GuestPage guestFrame = new GuestPage(username);
-                    frame.dispose();
-                    statusLabel.setForeground(Color.GREEN);
-                    statusLabel.setText("Login successful!");
-                } else {
-                    statusLabel.setForeground(Color.RED);
-                    statusLabel.setText("Incorrect password.");
-                }
-            } else {
-                statusLabel.setForeground(Color.RED);
-                statusLabel.setText("Username not found.");
-            }
-        }
+        super.actionPerformed(e);
     }
 
 }

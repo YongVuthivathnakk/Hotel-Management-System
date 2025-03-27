@@ -7,7 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
-public class AuthenticationForm {
+import javax.sound.midi.Synthesizer;
+
+public class AuthenticationForm implements ActionListener{
     Frame frame = new Frame();
     Panel panel = new Panel();
     HashMap<String, String> loginInfo = new HashMap<String, String>();
@@ -36,13 +38,7 @@ public class AuthenticationForm {
         passwordLabel.setForeground(Color.white);
         passwordLabel.setFont(new Font("Serif", Font.PLAIN, 24));
         passwordLabel.setBounds(50, 120, 300, 30);
-
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Handle login button click event
-            }
-        });
+        loginButton.addActionListener(this);
 
         panel.add(usernameLabel);
         panel.add(usernameInput);
@@ -52,4 +48,13 @@ public class AuthenticationForm {
 
         frame.add(panel);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == loginButton) {
+            System.out.println("Login Button Clicked");
+        }
+    }
+
+
 }

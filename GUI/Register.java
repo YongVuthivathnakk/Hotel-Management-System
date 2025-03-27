@@ -130,6 +130,13 @@ public class Register implements ActionListener{
         frame.setVisible(true);
     }
 
+    public static void sleep(int second) {
+        try {
+            Thread.sleep(second * 1000);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -147,6 +154,9 @@ public class Register implements ActionListener{
                 newGuest.register(firstName, lastName, username, gender, age, email, phoneNumber, password);
                 statusLabel.setText("Data is successfully registered !!!");
                 statusLabel.setForeground(Color.GREEN);
+                sleep(3);
+                AuthenticationMenu menu = new AuthenticationMenu();
+                frame.dispose();
             } catch (SQLException e1) {
                 statusLabel.setText("Registration failed. Please try again.");
                 statusLabel.setForeground(Color.RED);
