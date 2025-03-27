@@ -1,9 +1,10 @@
 package Rooms;
-public class FamilyRoom extends Room{
-    public FamilyRoom(){
-        this.description = "";
-        this.capacity = 5;
-        this.roomType = "Family Room";
-        this.pricePerNight = 200.0;
+public class FamilyRoom extends Room {
+    public FamilyRoom() {
+        super();
+        this.setDescription("Comfortable family room with two queen beds.");
+        this.setCapacity(2);
+        this.setRoomType("Family Room");
+        this.setPricePerNight(280);
     }
 }

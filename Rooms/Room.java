@@ -12,6 +12,15 @@ public abstract class Room { // abstract here is used for preventing from create
     protected double pricePerNight;
     protected int roomNumber;
 
+    public Room() {
+            this.description = "";
+            this.capacity = 0;
+            this.roomType = "";
+            this.pricePerNight = 0;
+            this.roomNumber = 0;
+        }
+
+
     protected static HashMap<Integer, Room> roomList = new HashMap<>();    
     protected static HashMap<Integer, Room> bookedRooms = new HashMap<>();
     

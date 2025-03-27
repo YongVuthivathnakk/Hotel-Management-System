@@ -3,11 +3,11 @@ package Rooms;
 
 public class StandardRoom extends Room {
     public StandardRoom(){ // constructor
-        this.description = "";
-        this.capacity = 2;
-        this.roomType = "Standard Room";
-        this.pricePerNight = 80;
-        
+        super();
+        this.setDescription("Modern standard room with city view");
+        this.setCapacity(2);
+        this.setRoomType("Standard Room");
+        this.setPricePerNight(80);
     }    
 }
 

@@ -3,11 +3,12 @@ package GUI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.JLabel;
 
-public class Login extends AuthenticationForm {
+public class Login extends AuthenticationForm implements ActionListener {
     JLabel header = new JLabel("Login");
     JLabel statusLabel = new JLabel("");
 
